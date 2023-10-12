@@ -82,6 +82,7 @@ public class EnemyAI: MonoBehaviour{
     }
 
     private void AttackPlayer(){
+        Debug.Log("in attack player");
         agent.SetDestination(transform.position);//stops enemy from continously running
         transform.LookAt(player);
 
