@@ -74,3 +74,4 @@ crashlytics-build.properties
 #doesn't upload store assets as they are in google drive
 /Assets/store assets/
 /Assets/SyntyStudios/
+/Assets/Low Poly Fire/
