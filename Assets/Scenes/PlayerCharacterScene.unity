@@ -2064,11 +2064,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90d5d895183045144b118ef2af5a8fa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 2129587997}
-  chaseRange: 10
-  attackRange: 3
-  attackCooldown: 3
-  isDead: 0
 --- !u!195 &964909483
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2282,6 +2277,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8290093257639701131, guid: a6dbd6ec3eb742aeb38e570384b30606, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 65c040f7a77fe1544b4085e122a69a99, type: 2}
     - target: {fileID: 8396656495392883730, guid: a6dbd6ec3eb742aeb38e570384b30606, type: 3}
       propertyPath: m_LocalPosition.x
       value: 19.22
@@ -2868,11 +2867,6 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
---- !u!4 &2129587997 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8396656495392883730, guid: a6dbd6ec3eb742aeb38e570384b30606, type: 3}
-  m_PrefabInstance: {fileID: 1137604328}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2129587999
 MonoBehaviour:
   m_ObjectHideFlags: 0
