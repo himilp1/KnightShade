@@ -72,6 +72,6 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 #doesn't upload store assets as they are in google drive
-/Assets/store assets/
+#/Assets/store assets/
 /Assets/SyntyStudios/
 /Assets/Low Poly Fire/
