@@ -6,97 +6,74 @@ using UnityEngine.AI;
 public class EnemyAI: MonoBehaviour{
     public NavMeshAgent agent;//our enemy
     public Transform player;
-    public LayerMask whatIsGround, whatIsPlayer;
-    
-    //Patroling
-    public Vector3 walkPoint;
-    bool walkPointSet;
-    public float walkPointRange;
+    public float walkRange;//same as sightRange
+    public float attackRange;
+    public LayerMask whatIsPlayer;
+    public bool inSightRange, inAttackRange;
 
-    //attacking
-    public float timeBetweenAttacks;
-    bool alreadyAttacked;
-
-    //States
-    public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange;
-
-    private void Awake(){
-        player = GameObject.Find("MC01").transform;
-        if (player == null)
-        {
-            Debug.LogError("Player reference is not assigned.");
-        }
+    void Awake(){
         agent = GetComponent<NavMeshAgent>();
-        if (agent == null)
-        {
-            Debug.LogError("NavMeshAgent component is missing.");
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        if(player == null){
+            Debug.Log("player not found");
         }
+        if(agent == null){
+            Debug.Log("agent not found");
+        }
+        Debug.Log("Enemy position is: " + agent.transform.position);
     }
 
-    private void Update(){
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-        
-        if(!playerInSightRange && !playerInAttackRange){
+    void Update(){
+        inSightRange = Physics.CheckSphere(agent.transform.position, walkRange, whatIsPlayer);
+        inAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+
+        if(!inSightRange && !inAttackRange){
+            Debug.Log("in patrol");
             Patrolling();
         }
-        if(playerInSightRange && !playerInAttackRange){
+        else if(inSightRange && !inAttackRange){
+            Debug.Log("in chase");
             ChasePlayer();
         }
-        if(playerInSightRange && playerInAttackRange){
-            AttackPlayer();
+        else if(inSightRange && inAttackRange){
+            Debug.Log("in attack");
+             AttackPlayer();
         }
     }
+
 
     private void Patrolling(){
-        Debug.Log("in Patrolling");
-        if(!walkPointSet){
-            SearchWalkPoint();
-        }
-
-        if(walkPointSet){
-            agent.SetDestination(walkPoint);
-            Debug.Log("should be moving right now");
-        }
-
-        Vector3 distanceToWalkPoint = transform.position - walkPoint;
-
-        //walkPoint reached
-        if(distanceToWalkPoint.magnitude < 1f){
-            walkPointSet = false;
+        if(agent.remainingDistance <= agent.stoppingDistance){
+            Vector3 point;
+            if(WalkPoint(agent.transform.position, walkRange, out point)){
+                agent.SetDestination(point);
+            }
         }
     }
-    private void SearchWalkPoint(){
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        if(Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround)){
-            walkPointSet = true;
+    private bool WalkPoint(Vector3 center, float range, out Vector3 result){
+        Vector3 randomPoint = center + Random.insideUnitSphere * range;
+        NavMeshHit hit;
+
+        if(NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas)){
+
+            result = hit.position;
+            return true;
         }
+
+        result = Vector3.zero;
+        return false;
     }
-    private void ChasePlayer(){
-        Debug.Log("in Chase Player");
-        agent.SetDestination(player.position);
+
+     private void ChasePlayer(){
+        agent.destination = player.position;
     }
 
     private void AttackPlayer(){
-        Debug.Log("in attack player");
         agent.SetDestination(transform.position);//stops enemy from continously running
         transform.LookAt(player);
 
-
-        if(!alreadyAttacked){
-            //still need to fill actual attack animations and such
-
-            //end of attack code
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
-        }
-    }
-
-    private void ResetAttack(){
-        alreadyAttacked = false;
+        
     }
 }
