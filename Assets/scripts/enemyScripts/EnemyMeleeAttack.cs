@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class EnemyMeleeAttack : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void DealDamage()
     {
-        
-    }
+        int enemyAtk = GetComponent<EnemyAI>().damage;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        PlayerHealth playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        playerHealth.TakeDamage(enemyAtk);
+
+        if (playerHealth.currentHealth <= 0)
+        {
+            //this is where we set players death trigger
+        }
     }
 }
