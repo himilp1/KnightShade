@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 5085391e49a6a8940a40e70e7a33f4f7
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - agent: {instanceID: 0}
+  - player: {instanceID: 0}
+  - projectile: {fileID: 1030886390429175683, guid: 3148b8d68e8343939f58244212435bd5, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
