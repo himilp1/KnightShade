@@ -6,6 +6,7 @@ public class EnemyMeleeAttack : MonoBehaviour
 {
     public void DealDamage()
     {
+        Debug.Log("dealing damage");
         int enemyAtk = GetComponent<EnemyAI>().damage;
 
         PlayerHealth playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
