@@ -41,11 +41,11 @@ public class EnemyAI : MonoBehaviour
             if (!inSightRange && !inAttackRange)
             {
                 speed = 2.0f;
-                Patrolling();
+                ChasePlayer();
             }
             else if (inSightRange && !inAttackRange)
             {
-                speed = 4.5f;
+                speed = 4f;
                 ChasePlayer();
             }
             else if (inSightRange && inAttackRange)

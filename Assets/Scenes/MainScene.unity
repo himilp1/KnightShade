@@ -5986,7 +5986,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 141668753}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.17456684, y: -0.000000018941938, z: 0.0000000033581977, w: 0.98464537}
+  m_LocalRotation: {x: 0.17456684, y: 0.000000018941929, z: -0.0000000033581966, w: 0.98464537}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -18078,6 +18078,9 @@ GameObject:
   - component: {fileID: 424347274}
   - component: {fileID: 424347276}
   - component: {fileID: 424347275}
+  - component: {fileID: 424347278}
+  - component: {fileID: 424347277}
+  - component: {fileID: 424347279}
   m_Layer: 7
   m_Name: Third Person Player
   m_TagString: Player
@@ -18118,7 +18121,7 @@ MonoBehaviour:
   speed: 6
   turnSmoothTime: 0.1
   HUD: {fileID: 1542393270}
-  animator: {fileID: 0}
+  animator: {fileID: 424347276}
 --- !u!143 &424347273
 CharacterController:
   m_ObjectHideFlags: 0
@@ -18172,11 +18175,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDamage: 25
-  attackCooldown: 0.5
-  attackHitBox: {fileID: 0}
+  attackCooldown: 0.3
+  attackHitBox: {fileID: 424347278}
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
+  animator: {fileID: 424347276}
 --- !u!95 &424347276
 Animator:
   serializedVersion: 5
@@ -18198,6 +18202,60 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &424347277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424347270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 821f03e4c9607bc4b87ccbcfd1df5bf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bowAndArrow: {fileID: 0}
+  doubleSword: {fileID: 0}
+  magicWand: {fileID: 0}
+  singleSword: {fileID: 0}
+  spear: {fileID: 0}
+  twoHandSword: {fileID: 0}
+  defaultPrimaryWeapon: {fileID: 645041688}
+  defaultSecondaryWeapon: {fileID: 0}
+--- !u!65 &424347278
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424347270}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.6113033, y: 1.4772896, z: 1.267381}
+  m_Center: {x: 0.042575836, y: 0.04784304, z: 0.7496904}
+--- !u!114 &424347279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424347270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c926c3a24b425fc479c110c1a192d3b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPoints: 0
 --- !u!1001 &427249470
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24627,7 +24685,7 @@ Transform:
   m_GameObject: {fileID: 607744004}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14, y: 2.351, z: 46}
+  m_LocalPosition: {x: 14, y: 2.351, z: 45.898}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25923,6 +25981,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 446930, guid: 77ad9661321c6e84280c8fbe32492c06, type: 3}
   m_PrefabInstance: {fileID: 1352590313}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &645041688 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6224927105533741479, guid: 4305d57a14554db6a18756e9885e1f25, type: 3}
+  m_PrefabInstance: {fileID: 1565739605}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &647591935
 PrefabInstance:
@@ -33319,13 +33382,13 @@ PrefabInstance:
       addedObject: {fileID: 2063225395}
     - targetCorrespondingSourceObject: {fileID: 792370378026291511, guid: bb9f04fde56345fcb729dee03ce0b3c8, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2063225397}
-    - targetCorrespondingSourceObject: {fileID: 792370378026291511, guid: bb9f04fde56345fcb729dee03ce0b3c8, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2063225400}
     - targetCorrespondingSourceObject: {fileID: 792370378026291511, guid: bb9f04fde56345fcb729dee03ce0b3c8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2063225401}
+    - targetCorrespondingSourceObject: {fileID: 792370378026291511, guid: bb9f04fde56345fcb729dee03ce0b3c8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2063225403}
   m_SourcePrefab: {fileID: 100100000, guid: bb9f04fde56345fcb729dee03ce0b3c8, type: 3}
 --- !u!1001 &792001716
 PrefabInstance:
@@ -79685,18 +79748,6 @@ MonoBehaviour:
   damage: 10
   atkCooldown: 1.5
   isDead: 0
---- !u!114 &2063225397
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1292940797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ac22a102fb21334ab1cd0790c240348, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &2063225400
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -79727,7 +79778,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1292940797}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba44cb23b43f5a244bef51ce9b9400ab, type: 3}
+  m_Script: {fileID: 11500000, guid: 91e33ec0201d791419193cf89c975715, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1000
+  currentHealth: 0
+--- !u!114 &2063225403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292940797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ac22a102fb21334ab1cd0790c240348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &2063670420
