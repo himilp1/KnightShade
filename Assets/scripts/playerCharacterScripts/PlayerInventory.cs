@@ -16,11 +16,9 @@ public class PlayerInventory : MonoBehaviour
     private GameObject currentMeleeWeapon;
     private GameObject currentRangedWeapon;
 
-    private Animator animator;  // For setting animation parameters
 
     private void Start()
     {
-        animator = GetComponent<Animator>();  // Initialize the animator reference
 
         // Set default weapons
         currentMeleeWeapon = defaultPrimaryWeapon;
@@ -88,7 +86,6 @@ public class PlayerInventory : MonoBehaviour
             currentMeleeWeapon = newWeapon;
         }
 
-        SetAnimationsBasedOnWeapon(newWeapon);  // Adjust animations based on weapon type
     }
 
     private bool IsRangedWeapon(GameObject weapon)
@@ -99,23 +96,5 @@ public class PlayerInventory : MonoBehaviour
     private bool IsTwoHandedSword(GameObject weapon)
     {
         return weapon.name.StartsWith("THS");
-    }
-
-    private void SetAnimationsBasedOnWeapon(GameObject weapon)
-    {
-        // Resetting all animation booleans
-        animator.SetBool("IsUsingTwoHandedSword", false);
-        animator.SetBool("IsUsingMagicWand", false);
-        // ... add other animation booleans resets here ...
-
-        if (IsTwoHandedSword(weapon))
-        {
-            animator.SetBool("IsUsingTwoHandedSword", true);
-        }
-        else if (weapon.name.StartsWith("Wand"))
-        {
-            animator.SetBool("IsUsingMagicWand", true);
-        }
-        // ... add other weapon specific checks here ...
     }
 }

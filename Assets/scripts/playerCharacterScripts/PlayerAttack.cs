@@ -5,17 +5,12 @@ public class PlayerAttack : MonoBehaviour
 {
     [Header("Attack")]
     public float attackDamage = 25.0f; // Amount of damage each attack deals
-    public float attackCooldown = 0.5f; // Cooldown time between attacks
+    public float attackCooldown = 0.3f; // Cooldown time between attacks
     public Collider attackHitBox; // The collider representing the attack hit area
     public LayerMask enemyLayer;  // Set this in the inspector to the layer where enemies reside
 
-    private Animator animator;
     private float lastAttackTime; // Timestamp of the last attack
-
-    private void Start()
-    {
-        animator = GetComponent<Animator>();
-    }
+    public Animator animator;
 
     private void Update()
     {
@@ -24,8 +19,8 @@ public class PlayerAttack : MonoBehaviour
 
     private void HandleAttack()
     {
-        // Check for "M" key press and the attack cooldown
-        if (Input.GetKeyDown(KeyCode.M) && Time.time - lastAttackTime > attackCooldown)
+        // Check for LeftClick press and the attack cooldown
+        if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time - lastAttackTime > attackCooldown)
         {
             StartAttack();
         }
@@ -33,9 +28,10 @@ public class PlayerAttack : MonoBehaviour
 
     private void StartAttack()
     {
-        animator.SetTrigger("Attack");
+        animator.SetBool("IsAttacking", true);
         lastAttackTime = Time.time;
         StartCoroutine(CheckAttackHit());
+        StartCoroutine(ResetIsAttacking()); // Start a coroutine to reset "IsAttacking"
         Debug.Log("Attack initiated.");
     }
 
@@ -46,23 +42,20 @@ public class PlayerAttack : MonoBehaviour
 
         Collider[] hits = Physics.OverlapBox(attackHitBox.bounds.center, attackHitBox.bounds.extents, transform.rotation, enemyLayer);
         Debug.Log("Hits detected: " + hits.Length);
-        foreach (Collider hit in hits) 
+        foreach (Collider hit in hits)
         {
             EnemyHealth enemy = hit.GetComponent<EnemyHealth>();
-            if (enemy) 
+            if (enemy)
             {
-                enemy.TakeDamage((int)attackDamage); 
+                enemy.TakeDamage((int)attackDamage);
             }
         }
-
-
     }
 
-    public bool IsAttacking() // Accessor for other scripts
+    private IEnumerator ResetIsAttacking()
     {
-        bool isAttackState = animator.GetCurrentAnimatorStateInfo(0).IsName("Attack");
-        return isAttackState;
+        // Wait for the duration of the attack animation, then reset "IsAttacking" to false
+        yield return new WaitForSeconds(attackCooldown);
+        animator.SetBool("IsAttacking", false);
     }
-
-
 }

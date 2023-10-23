@@ -19,11 +19,16 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     private InteractionText interactionText;
     public GameObject HUD;
+    public Animator animator;
 
     private void Start()
     {
-        // Get a reference to the InteractionText script attached to your UI Text element.
         interactionText = HUD.GetComponent<InteractionText>();
+
+        if (animator == null)
+        {
+            Debug.LogError("animator component not found.");
+        }
 
         if (interactionText == null)
         {
@@ -70,8 +75,17 @@ public class ThirdPersonPlayer : MonoBehaviour
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
 
+            // Set the IsRunning parameter to true in the Animator
+            animator.SetBool("IsRunning", true);
+
             // Apply gravity to the character's movement.
             controller.Move(velocity * Time.deltaTime);
+        }
+        else
+        {
+            // Set the IsRunning parameter to false in the Animator
+            animator.SetBool("IsRunning", false);
+
         }
     }
 
