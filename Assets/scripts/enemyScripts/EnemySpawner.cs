@@ -9,6 +9,10 @@ public class EnemySpawner : MonoBehaviour
     public int waveValue;
     public List<GameObject> enemiesToSpawn = new List<GameObject>();
     public List<Transform> spawnLocations = new List<Transform>();
+
+    private CurrentWaveText currentWaveText;
+    public GameObject HUD;
+
     public int waveDuration;
     private float waveTimer;
     private float spawnInterval;
@@ -18,6 +22,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
+        currentWaveText = HUD.GetComponent<CurrentWaveText>();
         GenerateWave();
         spawnInterval = 5.0f; // Set the spawn interval to 5 seconds.
         currentLocationIndex = 0; // Start at the first spawn location.
@@ -51,6 +56,7 @@ public class EnemySpawner : MonoBehaviour
         else
         {
             currWave += 1;
+            currentWaveText.SetWave(currWave);
             GenerateWave();
         }
     }

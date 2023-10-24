@@ -116,7 +116,7 @@ public class ThirdPersonPlayer : MonoBehaviour
             if (hit.transform.TryGetComponent(out CastleGate castleGate))
             {
                 // Show the text element with a custom message
-                interactionText.SetText("Press 'E' to open castle gate. (50 Points)");
+                interactionText.SetText("Press 'E' to open castle gate. \n (50 Points)");
                 interactionText.ShowText();
 
                 // This should ideally be moved to a file more related to the castle gate later.
