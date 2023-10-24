@@ -18,12 +18,19 @@ public class ThirdPersonPlayer : MonoBehaviour
     private Vector3 velocity;
 
     private InteractionText interactionText;
+    private PlayerPointsTracker pointsTracker;
     public GameObject HUD;
     public Animator animator;
 
     private void Start()
     {
         interactionText = HUD.GetComponent<InteractionText>();
+        pointsTracker = GetComponent<PlayerPointsTracker>();
+
+        if (pointsTracker == null)
+        {
+            Debug.LogError("Points tracker component not found.");
+        }
 
         if (animator == null)
         {
@@ -38,6 +45,8 @@ public class ThirdPersonPlayer : MonoBehaviour
         {
             Debug.Log("InteractionText component found.");
         }
+
+
 
         // Initially hide the text.
         interactionText.HideText();
@@ -107,12 +116,13 @@ public class ThirdPersonPlayer : MonoBehaviour
             if (hit.transform.TryGetComponent(out CastleGate castleGate))
             {
                 // Show the text element with a custom message
-                interactionText.SetText("Press 'E' to open castle gate.");
+                interactionText.SetText("Press 'E' to open castle gate. (50 Points)");
                 interactionText.ShowText();
 
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.E) && pointsTracker.currentPoints >= 50)
                 {
                     castleGate.Open();
+                    pointsTracker.SpendPoints(50);
                 }
             }
             else
