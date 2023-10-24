@@ -112,8 +112,8 @@ public class ThirdPersonPlayer : MonoBehaviour
 
         if (Physics.Raycast(interactionRay, out RaycastHit hit, maxInteractionDistance))
         {
-            // Check if the hit object is a castle gate
-            if (hit.transform.TryGetComponent(out CastleGate castleGate))
+            // Check if the hit object has the tag "CastleGate"
+            if (hit.collider.CompareTag("CastleGate"))
             {
                 // Show the text element with a custom message
                 interactionText.SetText("Press 'E' to open castle gate. \n (50 Points)");
@@ -124,6 +124,8 @@ public class ThirdPersonPlayer : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.E) && pointsTracker.currentPoints >= castleGateCost)
                 {
+                    // You can get the CastleGate component from the hit object
+                    CastleGate castleGate = hit.collider.GetComponent<CastleGate>();
                     castleGate.Open();
                     pointsTracker.SpendPoints(castleGateCost);
                 }
