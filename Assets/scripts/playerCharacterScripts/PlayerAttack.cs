@@ -19,8 +19,8 @@ public class PlayerAttack : MonoBehaviour
 
     private void HandleAttack()
     {
-        // Check for LeftClick press and the attack cooldown
-        if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time - lastAttackTime > attackCooldown)
+        // Check for "F" press and the attack cooldown
+        if (Input.GetKeyDown(KeyCode.F) && Time.time - lastAttackTime > attackCooldown)
         {
             StartAttack();
         }
