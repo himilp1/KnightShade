@@ -15,6 +15,8 @@ public class EnemyAI : MonoBehaviour
     public int damage;//enemy Atk value
     public float atkCooldown;
     public bool isDead;
+    public int enemyCost;
+    
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -41,11 +43,11 @@ public class EnemyAI : MonoBehaviour
             if (!inSightRange && !inAttackRange)
             {
                 speed = 2.0f;
-                Patrolling();
+                ChasePlayer();
             }
             else if (inSightRange && !inAttackRange)
             {
-                speed = 4.5f;
+                speed = 4f;
                 ChasePlayer();
             }
             else if (inSightRange && inAttackRange)
@@ -103,7 +105,7 @@ public class EnemyAI : MonoBehaviour
         }
         agent.speed = speed;
         animator.SetFloat("Speed", speed);
-        transform.LookAt(player);
+        transform.LookAt(new Vector3(player.position.x,0,player.position.z));
 
     }
 

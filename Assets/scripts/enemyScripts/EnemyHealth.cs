@@ -6,11 +6,15 @@ public class EnemyHealth : MonoBehaviour
     public int currentHealth;
     private Animator animator;  // Reference to the enemy's animator component
     private UnityEngine.AI.NavMeshAgent enemy;
-
+    private GameObject player;
     private void Start() 
     {
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();  // Initialize the animator reference
+        player = GameObject.FindGameObjectWithTag("Player");
+        if(player == null){
+            Debug.LogError("No Player Found!");
+        }
     }
 
     public void TakeDamage(int damage) 
@@ -32,7 +36,8 @@ public class EnemyHealth : MonoBehaviour
         animator.SetTrigger("Die");
 
         GetComponent<EnemyAI>().isDead = true;
-
+        int points = GetComponent<EnemyAI>().enemyCost;
+        player.GetComponent<PlayerPointsTracker>().AddPoints(points);
         // Optionally, destroy the enemy object after a delay
         Invoke("DestroyEnemy", 5.0f);
     }

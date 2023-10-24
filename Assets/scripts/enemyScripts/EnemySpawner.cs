@@ -8,15 +8,18 @@ public class EnemySpawner : MonoBehaviour
     public int currWave;
     public int waveValue;
     public List<GameObject> enemiesToSpawn = new List<GameObject>();
-    public Transform spawnLocation;
+    public List<Transform> spawnLocations = new List<Transform>();
     public int waveDuration;
     private float waveTimer;
     private float spawnInterval;
     private float spawnTimer;
+    private int currentLocationIndex; //keeps track of current spawn location
 
     void Start()
     {
-        GenerateWave();
+         GenerateWave();
+        spawnInterval = 5.0f; // Set the spawn interval to 5 seconds.
+        currentLocationIndex = 0; // Start at the first spawn location.
     }
 
     void Update()
@@ -25,9 +28,14 @@ public class EnemySpawner : MonoBehaviour
         {
             if (spawnTimer <= 0)
             {
-                // Spawn the enemy.
-                Instantiate(enemiesToSpawn[0], spawnLocation.position, Quaternion.identity);
+                // Spawn the first enemy in the list.
+                Instantiate(enemiesToSpawn[0], spawnLocations[currentLocationIndex].position, Quaternion.identity);
                 enemiesToSpawn.RemoveAt(0);
+
+                if (enemiesToSpawn.Count % 2 == 0) // Check if we've spawned a pair of enemies.
+                {
+                    currentLocationIndex = (currentLocationIndex + 1) % spawnLocations.Count; // Rotate through spawn locations.
+                }
 
                 // Reset the spawn timer.
                 spawnTimer = spawnInterval;

@@ -36,7 +36,6 @@ public class walkingAnimation : StateMachineBehaviour
       {
          animator.SetTrigger("Attack");
          lastAttackedAt = Time.time;
-         animator.GetComponent<EnemyHealth>().TakeDamage(20);//DELETE THIS, only for dummy testing
       }
    }
 
