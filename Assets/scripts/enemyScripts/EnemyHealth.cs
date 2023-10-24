@@ -36,7 +36,7 @@ public class EnemyHealth : MonoBehaviour
         animator.SetTrigger("Die");
 
         GetComponent<EnemyAI>().isDead = true;
-        int points = 5;
+        int points = GetComponent<EnemyAI>().enemyCost;
         player.GetComponent<PlayerPointsTracker>().AddPoints(points);
         // Optionally, destroy the enemy object after a delay
         Invoke("DestroyEnemy", 5.0f);

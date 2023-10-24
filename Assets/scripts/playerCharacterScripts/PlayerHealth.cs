@@ -18,7 +18,9 @@ public class PlayerHealth : MonoBehaviour{
     }
 
     public void playerIsDead(){
-        animator.SetBool("isDead", true);
         GetComponent<CharacterController>().enabled = false;
+        GetComponent<PlayerAttack>().enabled = false;
+        GetComponent<ThirdPersonPlayer>().enabled = false;
+        animator.SetBool("isDead", true);
     }
 }
