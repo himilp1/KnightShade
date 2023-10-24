@@ -9,6 +9,7 @@ public class EnemySpawner : MonoBehaviour
     public int waveValue;
     public List<GameObject> enemiesToSpawn = new List<GameObject>();
     public List<Transform> spawnLocations = new List<Transform>();
+    public List<GameObject> spawnedInEnemies = new List<GameObject>();
     public int waveDuration;
     private float waveTimer;
     private float spawnInterval;
@@ -21,24 +22,27 @@ public class EnemySpawner : MonoBehaviour
         GenerateWave();
         spawnInterval = 5.0f; // Set the spawn interval to 5 seconds.
         currentLocationIndex = 0; // Start at the first spawn location.
+        spawnedInEnemies.Clear();//makes sure there are no enemies already on the map at the start
     }
 
     void Update()
     {
 
-        if (enemiesToSpawn.Count > 0 || waveDuration < Time.deltaTime)
+        if (enemiesToSpawn.Count > 0)
         {
             if (spawnTimer <= 0)
             {
                 // Spawn the first enemy in the list.
-                Instantiate(enemiesToSpawn[0], spawnLocations[currentLocationIndex].position, Quaternion.identity);
+                GameObject newEnemy = Instantiate(enemiesToSpawn[0], spawnLocations[currentLocationIndex].position, Quaternion.identity);
                 enemiesToSpawn.RemoveAt(0);
-                currentGroupSize += 1;
 
+                currentGroupSize += 1;
+                
                 if (currentGroupSize % 2 == 0) // Check if we've spawned a pair of enemies.
                 {
                     currentLocationIndex = (currentLocationIndex + 1) % spawnLocations.Count; // Rotate through spawn locations.
                 }
+                spawnedInEnemies.Add(newEnemy);
 
                 // Reset the spawn timer.
                 spawnTimer = spawnInterval;
@@ -48,10 +52,11 @@ public class EnemySpawner : MonoBehaviour
                 spawnTimer -= Time.deltaTime;
             }
         }
-        else
-        {
-            currWave += 1;
-            GenerateWave();
+        else{
+            if(spawnedInEnemies.Count <= 0){
+                currWave += 1;
+                GenerateWave();
+            }
         }
     }
 
@@ -62,6 +67,7 @@ public class EnemySpawner : MonoBehaviour
 
         // Start the wave timer.
         waveTimer = waveDuration;
+        spawnedInEnemies.Clear(); //makes sure there are no assets from last wave still on the map
     }
 
     public void GenerateEnemies()
