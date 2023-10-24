@@ -72,7 +72,7 @@ public class EnemySpawner : MonoBehaviour
         {
             int randEnemyId = Random.Range(0, enemies.Count);
             int randEnemyCost = enemies[randEnemyId].cost;
-
+            enemies[randEnemyId].enemyPrefab.GetComponent<EnemyAI>().enemyCost = randEnemyCost;
             if (waveValue - randEnemyCost >= 0)
             {
                 generatedEnemies.Add(enemies[randEnemyId].enemyPrefab);

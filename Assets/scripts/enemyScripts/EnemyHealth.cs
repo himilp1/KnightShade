@@ -24,6 +24,7 @@ public class EnemyHealth : MonoBehaviour
         if(currentHealth <= 0) 
         {
             Die();
+            GetComponent<EnemyHealth>().enabled = false;
         }
     }
 
@@ -37,6 +38,7 @@ public class EnemyHealth : MonoBehaviour
 
         GetComponent<EnemyAI>().isDead = true;
         int points = GetComponent<EnemyAI>().enemyCost;
+        Debug.Log("about to add points to player, points to give: " + points);
         player.GetComponent<PlayerPointsTracker>().AddPoints(points);
         // Optionally, destroy the enemy object after a delay
         Invoke("DestroyEnemy", 5.0f);

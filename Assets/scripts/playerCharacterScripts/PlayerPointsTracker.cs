@@ -14,6 +14,7 @@ public class PlayerPointsTracker : MonoBehaviour
     public void AddPoints(int points)
     {
         //call this function after an enemy has died to recieve those enemies points
+        Debug.Log("in addpoints");
         currentPoints += points;
     }
 
