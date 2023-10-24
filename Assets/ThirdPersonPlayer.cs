@@ -119,10 +119,13 @@ public class ThirdPersonPlayer : MonoBehaviour
                 interactionText.SetText("Press 'E' to open castle gate. (50 Points)");
                 interactionText.ShowText();
 
-                if (Input.GetKeyDown(KeyCode.E) && pointsTracker.currentPoints >= 50)
+                // This should ideally be moved to a file more related to the castle gate later.
+                int castleGateCost = 50;
+
+                if (Input.GetKeyDown(KeyCode.E) && pointsTracker.currentPoints >= castleGateCost)
                 {
                     castleGate.Open();
-                    pointsTracker.SpendPoints(50);
+                    pointsTracker.SpendPoints(castleGateCost);
                 }
             }
             else
