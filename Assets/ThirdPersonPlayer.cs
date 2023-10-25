@@ -115,12 +115,13 @@ public class ThirdPersonPlayer : MonoBehaviour
             // Check if the hit object has the tag "CastleGate"
             if (hit.collider.CompareTag("CastleGate"))
             {
-                // Show the text element with a custom message
-                interactionText.SetText("Press 'E' to open castle gate. \n (50 Points)");
-                interactionText.ShowText();
-
                 // This should ideally be moved to a file more related to the castle gate later.
-                int castleGateCost = 50;
+                int castleGateCost = 20;
+
+
+                // Show the text element with a custom message
+                interactionText.SetText("Press 'E' to open castle gate. \n (" + castleGateCost + " Points)");
+                interactionText.ShowText();
 
                 if (Input.GetKeyDown(KeyCode.E) && pointsTracker.currentPoints >= castleGateCost)
                 {
