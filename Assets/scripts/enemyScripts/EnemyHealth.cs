@@ -37,16 +37,16 @@ public class EnemyHealth : MonoBehaviour
         animator.SetTrigger("Die");
 
         GetComponent<EnemyAI>().isDead = true;
-        int points = GetComponent<EnemyAI>().enemyCost;
-        Debug.Log("about to add points to player, points to give: " + points);
-        player.GetComponent<PlayerPointsTracker>().AddPoints(points);
         // Optionally, destroy the enemy object after a delay
-        Invoke("DestroyEnemy", 5.0f);
+        Invoke("DestroyEnemy", 3.0f);
     }
 
 
     private void DestroyEnemy()
     {
+        int points = GetComponent<EnemyAI>().enemyCost;
+        player.GetComponent<PlayerPointsTracker>().AddPoints(points);
+        Debug.Log("about to add points to player, points to give: " + points);
         Destroy(gameObject);
     }
 }

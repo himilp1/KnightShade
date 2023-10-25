@@ -39,7 +39,6 @@ public class EnemyAI : MonoBehaviour
         inAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
         if (!isDead)
         {
-            Debug.Log("doing update movement");
             if (!inSightRange && !inAttackRange)
             {
                 speed = 2.0f;
@@ -61,6 +60,7 @@ public class EnemyAI : MonoBehaviour
 
     public void Patrolling()
     {
+        transform.LookAt(new Vector3(player.position.x,0,player.position.z));
         agent.speed = speed;
         if (agent.remainingDistance <= agent.stoppingDistance)
         {
@@ -91,6 +91,7 @@ public class EnemyAI : MonoBehaviour
 
     public void ChasePlayer()
     {
+        transform.LookAt(new Vector3(player.position.x,0,player.position.z));
         agent.speed = speed;
         agent.destination = player.position;
         animator.SetFloat("Speed", speed);

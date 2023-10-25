@@ -52,7 +52,7 @@ public class PlayerHealth : MonoBehaviour
         if (Time.time - lastDamageTime > regenDelay)
         {
             // Eventually change to use regen rate to regenerate over time rather than instantly
-            currentHealth = 100;
+            currentHealth = maxHealth;
             healthBar.SetHealth(currentHealth);
         }
     }

@@ -18,12 +18,19 @@ public class ThirdPersonPlayer : MonoBehaviour
     private Vector3 velocity;
 
     private InteractionText interactionText;
+    private PlayerPointsTracker pointsTracker;
     public GameObject HUD;
     public Animator animator;
 
     private void Start()
     {
         interactionText = HUD.GetComponent<InteractionText>();
+        pointsTracker = GetComponent<PlayerPointsTracker>();
+
+        if (pointsTracker == null)
+        {
+            Debug.LogError("Points tracker component not found.");
+        }
 
         if (animator == null)
         {
@@ -38,6 +45,8 @@ public class ThirdPersonPlayer : MonoBehaviour
         {
             Debug.Log("InteractionText component found.");
         }
+
+
 
         // Initially hide the text.
         interactionText.HideText();
@@ -103,16 +112,22 @@ public class ThirdPersonPlayer : MonoBehaviour
 
         if (Physics.Raycast(interactionRay, out RaycastHit hit, maxInteractionDistance))
         {
-            // Check if the hit object is a castle gate
-            if (hit.transform.TryGetComponent(out CastleGate castleGate))
+            // Check if the hit object has the tag "CastleGate"
+            if (hit.collider.CompareTag("CastleGate"))
             {
                 // Show the text element with a custom message
-                interactionText.SetText("Press 'E' to open castle gate.");
+                interactionText.SetText("Press 'E' to open castle gate. \n (50 Points)");
                 interactionText.ShowText();
 
-                if (Input.GetKeyDown(KeyCode.E))
+                // This should ideally be moved to a file more related to the castle gate later.
+                int castleGateCost = 50;
+
+                if (Input.GetKeyDown(KeyCode.E) && pointsTracker.currentPoints >= castleGateCost)
                 {
+                    // You can get the CastleGate component from the hit object
+                    CastleGate castleGate = hit.collider.GetComponent<CastleGate>();
                     castleGate.Open();
+                    pointsTracker.SpendPoints(castleGateCost);
                 }
             }
             else

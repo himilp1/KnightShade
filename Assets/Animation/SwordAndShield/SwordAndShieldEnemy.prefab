@@ -660,7 +660,7 @@ GameObject:
   - component: {fileID: 2670843755375423495}
   m_Layer: 6
   m_Name: SwordAndShieldEnemy
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -778,7 +778,7 @@ MonoBehaviour:
   damage: 10
   atkCooldown: 1.5
   isDead: 0
-  enemyCost: 0
+  enemyCost: 10
 --- !u!114 &6079119257865446665
 MonoBehaviour:
   m_ObjectHideFlags: 0

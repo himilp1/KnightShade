@@ -2140,7 +2140,7 @@ GameObject:
   - component: {fileID: -6825070320281445805}
   m_Layer: 6
   m_Name: spear enemy
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2293,7 +2293,7 @@ MonoBehaviour:
   damage: 15
   atkCooldown: 2.5
   isDead: 0
-  enemyCost: 0
+  enemyCost: 2
 --- !u!114 &8516738886400302218
 MonoBehaviour:
   m_ObjectHideFlags: 0
