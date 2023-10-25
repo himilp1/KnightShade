@@ -10,10 +10,5 @@ public class EnemyMeleeAttack : MonoBehaviour
 
         PlayerHealth playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         playerHealth.TakeDamage(enemyAtk);
-
-        if (playerHealth.currentHealth <= 0)
-        {
-            //this is where we set players death trigger
-        }
     }
 }

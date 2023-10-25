@@ -11563,7 +11563,7 @@ GameObject:
   - component: {fileID: 255018814}
   - component: {fileID: 255018815}
   m_Layer: 0
-  m_Name: navmesh
+  m_Name: NavMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11613,8 +11613,8 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: b3e1ea494f1b12942905bc9164a19d42, type: 2}
-  m_BuildHeightMesh: 0
+  m_NavMeshData: {fileID: 23800000, guid: 260998dbe10c3e145b31a89438f61b5a, type: 2}
+  m_BuildHeightMesh: 1
 --- !u!1001 &257040073
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18552,13 +18552,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c0269d5e6a6c3e43920a7fb4697471d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 50
+  attackDamage: 25
   attackCooldown: 0.3
   attackHitBox: {fileID: 424347278}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
   animator: {fileID: 424347276}
+  knockbackForce: 3
+  knockbackDuration: 1
 --- !u!95 &424347276
 Animator:
   serializedVersion: 5
@@ -52924,7 +52926,8 @@ MonoBehaviour:
   - {fileID: 123642415}
   - {fileID: 176731412}
   HUD: {fileID: 1542393270}
-  waveDuration: 1000000
+  surface: {fileID: 0}
+  waveDuration: 20
 --- !u!4 &1382147783
 Transform:
   m_ObjectHideFlags: 0
@@ -68187,6 +68190,10 @@ PrefabInstance:
     - target: {fileID: 3670891884284839507, guid: b12f68b777df4b047b9f25b4ade067f4, type: 3}
       propertyPath: m_Name
       value: SwordAndShieldEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3670891884284839507, guid: b12f68b777df4b047b9f25b4ade067f4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

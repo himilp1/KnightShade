@@ -12,6 +12,9 @@ public class PlayerAttack : MonoBehaviour
     private float lastAttackTime; // Timestamp of the last attack
     public Animator animator;
 
+    public float knockbackForce;
+    public float knockbackDuration = 1.0f;
+
     private void Update()
     {
         HandleAttack();
@@ -48,6 +51,7 @@ public class PlayerAttack : MonoBehaviour
             if (enemy)
             {
                 enemy.TakeDamage((int)attackDamage);
+                KnockbackEnemy(enemy.transform);
             }
         }
     }
@@ -57,5 +61,29 @@ public class PlayerAttack : MonoBehaviour
         // Wait for the duration of the attack animation, then reset "IsAttacking" to false
         yield return new WaitForSeconds(attackCooldown);
         animator.SetBool("IsAttacking", false);
+    }
+
+    public void KnockbackEnemy(Transform enemy)
+    {
+         StartCoroutine(KnockbackCoroutine(enemy));
+    }
+
+    private IEnumerator KnockbackCoroutine(Transform enemy)
+    {
+        Vector3 originalPosition = enemy.position;
+        Vector3 targetPosition = originalPosition + transform.forward * knockbackForce;
+
+        float startTime = Time.time;
+        float journeyLength = Vector3.Distance(originalPosition, targetPosition);
+
+        while (Time.time < startTime + knockbackDuration)
+        {
+            float distanceCovered = (Time.time - startTime) * knockbackForce / journeyLength;
+            enemy.position = Vector3.Lerp(originalPosition, targetPosition, distanceCovered);
+            yield return null;
+        }
+
+        // Ensure the enemy reaches the exact target position.
+        enemy.position = targetPosition;
     }
 }
