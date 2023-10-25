@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4503535, g: 0.5003732, b: 0.5752818, a: 1}
+  m_IndirectSpecularColor: {r: 0.4503531, g: 0.5003724, b: 0.57528085, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -18534,10 +18534,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e096789610c670143a2d7adbf1d83a71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1000
+  maxHealth: 200
   currentHealth: 0
   regenRate: 2
-  regenDelay: 10
+  regenDelay: 7
   animator: {fileID: 0}
   healthBar: {fileID: 1585819942}
 --- !u!114 &424347275
@@ -18552,7 +18552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c0269d5e6a6c3e43920a7fb4697471d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 25
+  attackDamage: 34
   attackCooldown: 0.3
   attackHitBox: {fileID: 424347278}
   enemyLayer:
@@ -18621,8 +18621,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.6113033, y: 1.4772896, z: 1.267381}
-  m_Center: {x: 0.042575836, y: 0.04784304, z: 0.7496904}
+  m_Size: {x: 1.6113033, y: 1.4772896, z: 1.5258572}
+  m_Center: {x: 0.042575836, y: 0.04784304, z: 0.87892854}
 --- !u!114 &424347279
 MonoBehaviour:
   m_ObjectHideFlags: 0

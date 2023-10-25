@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -10,15 +11,21 @@ public class PlayerHealth : MonoBehaviour
 
     public Animator animator;
     public HealthBar healthBar;
+    public GameObject HUD;
 
     private bool canRegenerate;
     private float lastDamageTime;
+    private DeathText deathText;
 
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+
         animator = GetComponent<Animator>();
+        deathText = HUD.GetComponent<DeathText>();
+        deathText.HideText();
+
         canRegenerate = false;
     }
 
@@ -63,5 +70,12 @@ public class PlayerHealth : MonoBehaviour
         GetComponent<PlayerAttack>().enabled = false;
         GetComponent<ThirdPersonPlayer>().enabled = false;
         animator.SetBool("isDead", true);
+        deathText.ShowText();
+        Invoke("RetrunToMenu", 2.0f);
+    }
+
+    private void RetrunToMenu()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }
