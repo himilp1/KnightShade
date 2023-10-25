@@ -16,7 +16,6 @@ public class EnemyAI : MonoBehaviour
     public float atkCooldown;
     public bool isDead;
     public int enemyCost;
-    
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -30,13 +29,24 @@ public class EnemyAI : MonoBehaviour
         if (agent == null)
         {
             Debug.Log("agent not found");
-        }  
+        }
     }
 
     void Update()
     {
-        inSightRange = Physics.CheckSphere(agent.transform.position, walkRange, whatIsPlayer);
-        inAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        inSightRange = Physics.CheckSphere(transform.position, walkRange, whatIsPlayer);
+
+        float distance = Vector3.Distance(agent.transform.position, player.position);
+
+        if (distance < attackRange)
+        {
+            inAttackRange = true;
+        }
+        else
+        {
+            inAttackRange = false;
+        }
+
         if (!isDead)
         {
             if (!inSightRange && !inAttackRange)
@@ -60,7 +70,7 @@ public class EnemyAI : MonoBehaviour
 
     public void Patrolling()
     {
-        transform.LookAt(new Vector3(player.position.x,0,player.position.z));
+        transform.LookAt(new Vector3(player.position.x, 0, player.position.z));
         agent.speed = speed;
         if (agent.remainingDistance <= agent.stoppingDistance)
         {
@@ -91,7 +101,7 @@ public class EnemyAI : MonoBehaviour
 
     public void ChasePlayer()
     {
-        transform.LookAt(new Vector3(player.position.x,0,player.position.z));
+        transform.LookAt(new Vector3(player.position.x, 0, player.position.z));
         agent.speed = speed;
         agent.destination = player.position;
         animator.SetFloat("Speed", speed);
@@ -99,14 +109,9 @@ public class EnemyAI : MonoBehaviour
 
     public void AttackPlayer()
     {
-        float distance = Vector3.Distance(player.position, agent.transform.position);
-        if (distance <= attackRange)
-        {
-            agent.SetDestination(transform.position);//stops enemy from continously running
-        }
-        agent.speed = speed;
+        transform.LookAt(new Vector3(player.position.x, 0, player.position.z));
+        agent.destination = transform.position;
         animator.SetFloat("Speed", speed);
-        transform.LookAt(new Vector3(player.position.x,0,player.position.z));
 
     }
 

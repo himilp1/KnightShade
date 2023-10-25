@@ -18,6 +18,7 @@ public class EnemySpawner : MonoBehaviour
     private int currentLocationIndex; //keeps track of current spawn location
     private int currentGroupSize;
     private int waveGroupSize;
+    public NavMeshSurface surface;
     void Start()
     {
         currentWaveText = HUD.GetComponent<CurrentWaveText>();
@@ -38,7 +39,7 @@ public class EnemySpawner : MonoBehaviour
                 Instantiate(enemiesToSpawn[0], spawnLocations[currentLocationIndex].position, Quaternion.identity);
                 enemiesToSpawn.RemoveAt(0);
                 currentGroupSize += 1;
-
+                surface.BuildNavMesh();
                 if (currentGroupSize % waveGroupSize == 0) // Check if we've spawned a pair of enemies.
                 {
                     currentLocationIndex = (currentLocationIndex + 1) % spawnLocations.Count; // Rotate through spawn locations.
