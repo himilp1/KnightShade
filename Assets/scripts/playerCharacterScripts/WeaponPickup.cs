@@ -3,28 +3,36 @@ using TMPro;  // Import TMP namespace
 
 public class WeaponPickup : MonoBehaviour
 {
-    public GameObject weaponToEquip; 
-    public TextMeshProUGUI pickupPrompt; 
+    public GameObject weaponToEquip;
+    public TextMeshProUGUI pickupPrompt;
+
+    public GameObject player;
+    private PlayerPointsTracker playerPointsTracker;
 
     private bool isPlayerInRange = false;
+    public int weaponCost = 30;
 
     private void Start()
     {
+        playerPointsTracker = player.GetComponent<PlayerPointsTracker>();
         pickupPrompt.gameObject.SetActive(false);
     }
 
     private void Update()
     {
-        if(isPlayerInRange)
+        if (isPlayerInRange)
         {
-            if(Input.GetKeyDown(KeyCode.M))
+            if (Input.GetKeyDown(KeyCode.M) && playerPointsTracker.currentPoints >= weaponCost)
             {
                 AssignWeaponToSlot("Primary");
+                playerPointsTracker.SpendPoints(weaponCost);
             }
+            /*
             else if (Input.GetKeyDown(KeyCode.N))
             {
                 AssignWeaponToSlot("Secondary");
             }
+            */
         }
     }
 
@@ -44,7 +52,7 @@ public class WeaponPickup : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             pickupPrompt.gameObject.SetActive(true);
-            pickupPrompt.text = "Press M for Primary or N for Secondary to pick up " + weaponToEquip.name;
+            pickupPrompt.text = "Press M to Pickup \n (" + weaponCost + " Points)";
             isPlayerInRange = true;
         }
     }
