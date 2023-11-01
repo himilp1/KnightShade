@@ -7,6 +7,7 @@ public class EnemyHealth : MonoBehaviour
     private Animator animator;  // Reference to the enemy's animator component
     private UnityEngine.AI.NavMeshAgent enemy;
     private GameObject player;
+    [SerializeField] floatingHealthBar healthBar;
     private void Start() 
     {
         currentHealth = maxHealth;
@@ -15,12 +16,13 @@ public class EnemyHealth : MonoBehaviour
         if(player == null){
             Debug.LogError("No Player Found!");
         }
+        healthBar = GetComponentInChildren<floatingHealthBar>();
     }
 
     public void TakeDamage(int damage) 
     {
         currentHealth -= damage;
-        
+        healthBar.UpdateHealthBar(currentHealth, maxHealth);
         if(currentHealth <= 0) 
         {
             Die();
