@@ -152,6 +152,22 @@ public class ThirdPersonPlayer : MonoBehaviour
                 }
             }
 
+            else if (hit.collider.CompareTag("HealthPotion"))
+            {
+                int healthPotionCost = 2;
+
+                // Show the text element with a custom message
+                interactionText.SetText("Press 'E' to consume health potion. \n (" + healthPotionCost + " Points)");
+                interactionText.ShowText();
+
+                if (Input.GetKeyDown(KeyCode.E) && pointsTracker.currentPoints >= healthPotionCost)
+                {
+                    HealthPotion healthPotion = hit.collider.GetComponent<HealthPotion>();
+                    healthPotion.Consume();
+                    pointsTracker.SpendPoints(healthPotionCost);
+                }
+            }
+
             else
             {
                 // Hide the text element if not interacting with a castle gate
