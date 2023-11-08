@@ -16,6 +16,7 @@ public class PlayerAttack : MonoBehaviour
     public float knockbackDuration = 1.0f;
 
     private PlayerInventory playerInventory;
+    private Collider weaponCollider;
 
     private void Start()
     {
@@ -68,9 +69,9 @@ public class PlayerAttack : MonoBehaviour
     {
         animator.SetBool("IsAttacking", true);
         lastAttackTime = Time.time;
-        StartCoroutine(CheckAttackHit());
+        //StartCoroutine(CheckAttackHit());
         StartCoroutine(ResetIsAttacking()); // Start a coroutine to reset "IsAttacking"
-        Debug.Log("Attack initiated.");
+       //Debug.Log("Attack initiated.");
     }
 
     private IEnumerator CheckAttackHit()
@@ -79,13 +80,13 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(0.3f); // Adjust this time based on your animation
 
         Collider[] hits = Physics.OverlapBox(attackHitBox.bounds.center, attackHitBox.bounds.extents, transform.rotation, enemyLayer);
-        Debug.Log("Hits detected: " + hits.Length);
+        //Debug.Log("Hits detected: " + hits.Length);
         foreach (Collider hit in hits)
         {
             EnemyHealth enemy = hit.GetComponent<EnemyHealth>();
             if (enemy)
             {
-                Debug.Log("Dealt Damage: " + attackDamage);
+                //Debug.Log("Dealt Damage: " + attackDamage);
                 enemy.TakeDamage((int)attackDamage);
                 KnockbackEnemy(enemy.transform);
             }
@@ -96,9 +97,12 @@ public class PlayerAttack : MonoBehaviour
     {
         // Wait for the duration of the attack animation, then reset "IsAttacking" to false
         yield return new WaitForSeconds(attackCooldown);
-        animator.SetBool("IsAttacking", false);
+        //animator.SetBool("IsAttacking", false);
     }
 
+    public void EndAttack(){
+        animator.SetBool("IsAttacking", false);
+    }
     public void KnockbackEnemy(Transform enemy)
     {
         StartCoroutine(KnockbackCoroutine(enemy));

@@ -15,7 +15,6 @@ public class floatingHealthBar : MonoBehaviour{
         player = GameObject.FindGameObjectWithTag("Player").transform;
         camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         FindHighestParentTransform();
-        Debug.Log("target.transform: " + target);
     }
     void Update(){
         transform.rotation = camera.transform.rotation;

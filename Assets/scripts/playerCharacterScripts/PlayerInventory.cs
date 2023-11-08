@@ -13,7 +13,7 @@ public class PlayerInventory : MonoBehaviour
     public GameObject defaultPrimaryWeapon;  // OHS07_Sword
     public GameObject defaultSecondaryWeapon; // OHS02_Sword
 
-    private GameObject currentMeleeWeapon;
+    public GameObject currentMeleeWeapon;
     private GameObject currentRangedWeapon;
 
 
