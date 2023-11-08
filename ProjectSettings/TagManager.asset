@@ -8,6 +8,8 @@ TagManager:
   - CastleGate
   - enemy
   - Axe
+  - MysteryBox
+  - HealthPotion
   layers:
   - Default
   - TransparentFX

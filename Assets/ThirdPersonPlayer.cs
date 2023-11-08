@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -110,14 +111,16 @@ public class ThirdPersonPlayer : MonoBehaviour
         // Create a ray that will be used for raycasting
         Ray interactionRay = new Ray(rayOrigin, rayDirection);
 
+        // Debug.DrawRay for visualization
+        Debug.DrawRay(rayOrigin, rayDirection * maxInteractionDistance, Color.red);
+
         if (Physics.Raycast(interactionRay, out RaycastHit hit, maxInteractionDistance))
         {
-            // Check if the hit object has the tag "CastleGate"
+            // Check if the hit object is a castle gate
             if (hit.collider.CompareTag("CastleGate"))
             {
                 // This should ideally be moved to a file more related to the castle gate later.
                 int castleGateCost = 20;
-
 
                 // Show the text element with a custom message
                 interactionText.SetText("Press 'E' to open castle gate. \n (" + castleGateCost + " Points)");
@@ -131,6 +134,40 @@ public class ThirdPersonPlayer : MonoBehaviour
                     pointsTracker.SpendPoints(castleGateCost);
                 }
             }
+
+            // Check if the hit object is a mystery box
+            else if (hit.collider.CompareTag("MysteryBox"))
+            {
+                int mysteryBoxCost = 2;
+
+                // Show the text element with a custom message
+                interactionText.SetText("Press 'E' to get a random rare weapon. \n (" + mysteryBoxCost + " Points)");
+                interactionText.ShowText();
+
+                if (Input.GetKeyDown(KeyCode.E) && pointsTracker.currentPoints >= mysteryBoxCost)
+                {
+                    MysteryBox mysteryBox = hit.collider.GetComponent<MysteryBox>();
+                    mysteryBox.Open();
+                    pointsTracker.SpendPoints(mysteryBoxCost);
+                }
+            }
+
+            else if (hit.collider.CompareTag("HealthPotion"))
+            {
+                int healthPotionCost = 2;
+
+                // Show the text element with a custom message
+                interactionText.SetText("Press 'E' to consume health potion. \n (" + healthPotionCost + " Points)");
+                interactionText.ShowText();
+
+                if (Input.GetKeyDown(KeyCode.E) && pointsTracker.currentPoints >= healthPotionCost)
+                {
+                    HealthPotion healthPotion = hit.collider.GetComponent<HealthPotion>();
+                    healthPotion.Consume();
+                    pointsTracker.SpendPoints(healthPotionCost);
+                }
+            }
+
             else
             {
                 // Hide the text element if not interacting with a castle gate
