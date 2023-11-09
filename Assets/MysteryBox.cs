@@ -12,6 +12,8 @@ public class MysteryBox : MonoBehaviour
 
     public float openTime = 2.0f;
 
+    public List<GameObject> weapons = new List<GameObject>();
+
     private void Start()
     {
         boxLid = transform.Find("Chest_Open_Cap").gameObject;
