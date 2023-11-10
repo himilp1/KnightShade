@@ -12,13 +12,13 @@ public class WeaponAttack : MonoBehaviour
         weaponStats = GetComponent<WeaponStats>();
     }
 
-    void OnTriggerStay(Collider collision){
+    void OnTriggerExit(Collider collision){
         if(collision.TryGetComponent<EnemyAI>(out EnemyAI enemy)){
             if(playerAnimator.GetBool("IsAttacking")){
-                Debug.Log("about to attack enemy");
+                Debug.Log("dealing damage: " + weaponStats.atkDmg);
                 EnemyHealth enemyHP = enemy.GetComponent<EnemyHealth>();
                 enemyHP.TakeDamage(weaponStats.atkDmg);
-                playerAnimator.SetBool("IsAttacking", false);
+                playerAnimator.GetComponent<PlayerAttack>().attackCooldown = weaponStats.atkSpd;
             }
         }
     }
