@@ -15,7 +15,7 @@ public class PlayerInventory : MonoBehaviour
 
     public GameObject currentMeleeWeapon;
     private GameObject currentRangedWeapon;
-
+    private GameObject player;
 
     private void Start()
     {
@@ -23,7 +23,7 @@ public class PlayerInventory : MonoBehaviour
         // Set default weapons
         currentMeleeWeapon = defaultPrimaryWeapon;
         currentRangedWeapon = defaultSecondaryWeapon;
-
+        player = GameObject.FindGameObjectWithTag("Player");
         EquipWeapon(defaultPrimaryWeapon);
     }
 
@@ -84,6 +84,9 @@ public class PlayerInventory : MonoBehaviour
             }
             newWeapon.SetActive(true);
             currentMeleeWeapon = newWeapon;
+            int weaponType = newWeapon.GetComponent<WeaponStats>().weaponType;
+            player.GetComponent<SetWeaponAnimations>().Set(weaponType);
+            
         }
 
     }
