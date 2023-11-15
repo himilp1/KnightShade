@@ -1,11 +1,12 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
     [Header("Attack")]
     private float attackDamage; // Amount of damage each attack deals
-    public float attackCooldown = 0.3f; // Cooldown time between attacks
+    public float attackCooldown; // Cooldown time between attacks
     public Collider attackHitBox; // The collider representing the attack hit area
     public LayerMask enemyLayer;  // Set this in the inspector to the layer where enemies reside
 
@@ -38,24 +39,6 @@ public class PlayerAttack : MonoBehaviour
         HandleAttack();
     }
 
-    private void SetWeaponStats()
-    {
-        if (playerInventory.defaultPrimaryWeapon.name == "OHS10_Axe")
-        {
-            attackCooldown = 0.5f;
-            attackDamage = 75.0f;
-        }
-        else if (playerInventory.defaultPrimaryWeapon.name == "THS05_Sword")
-        {
-            attackCooldown = 0.1f;
-            attackDamage = 40.0f;
-        }
-        else
-        {
-            attackDamage = 34.0f;
-        }
-    }
-
     private void HandleAttack()
     {
         // Check for "F" press and the attack cooldown
@@ -71,7 +54,6 @@ public class PlayerAttack : MonoBehaviour
         lastAttackTime = Time.time;
     }
 
-   
     public void EndAttack(){
         animator.SetBool("IsAttacking", false);
     }
