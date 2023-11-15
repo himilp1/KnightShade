@@ -18,6 +18,9 @@ public class PlayerAttack : MonoBehaviour
 
     private PlayerInventory playerInventory;
     private Collider weaponCollider;
+    private int comboCounter = 1;
+    private int maxCombo = 3;
+    private float comboTimer = 5f;
 
     private void Start()
     {
@@ -41,23 +44,56 @@ public class PlayerAttack : MonoBehaviour
 
     private void HandleAttack()
     {
+        //combo system is not working here. wonky
+
         // Check for "F" press and the attack cooldown
-        if (Input.GetKeyDown(KeyCode.F) && Time.time - lastAttackTime > attackCooldown)
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            StartAttack();
+            if(Time.time - lastAttackTime > attackCooldown){
+                if(Time.time - lastAttackTime < comboTimer){
+                    comboCounter++;
+                    if(comboCounter <= maxCombo){
+                        StartAttack(comboCounter);
+                    }
+                    else{
+                        ResetCombo();
+                        StartAttack(comboCounter);
+                    }
+                }
+                else{
+                    ResetCombo();
+                    StartAttack(comboCounter);
+                }
+            }
         }
     }
 
-    private void StartAttack()
+    private void StartAttack(int comboCounter)
     {
         animator.SetBool("IsAttacking", true);
+        string hitNum = "hit" + comboCounter.ToString();
+        animator.SetBool(hitNum, true);
+        Debug.Log("in StartAttack: " + hitNum);
         lastAttackTime = Time.time;
     }
 
-    public void EndAttack(){
+    public void EndAttack(int Counter){
+
         animator.SetBool("IsAttacking", false);
+
+        // if(comboCounter >= maxCombo){
+        //     ResetCombo();
+        // }
+
+        string hitNum = "hit" + Counter.ToString();
+        Debug.Log("hitNum: " + hitNum);
+        animator.SetBool(hitNum, false);
     }
     
+    private void ResetCombo(){
+        comboCounter = 1;
+    }
+
     public void KnockbackEnemy(Transform enemy)
     {
         StartCoroutine(KnockbackCoroutine(enemy));
