@@ -7,20 +7,17 @@ public class PlayerAttack : MonoBehaviour
     [Header("Attack")]
     private float attackDamage; // Amount of damage each attack deals
     public float attackCooldown; // Cooldown time between attacks
-    public Collider attackHitBox; // The collider representing the attack hit area
-    public LayerMask enemyLayer;  // Set this in the inspector to the layer where enemies reside
-
-    private float lastAttackTime; // Timestamp of the last attack
     public Animator animator;
 
     public float knockbackForce;
     public float knockbackDuration = 1.0f;
 
     private PlayerInventory playerInventory;
-    private Collider weaponCollider;
-    private int comboCounter = 1;
-    private int maxCombo = 3;
-    private float comboTimer = 5f;
+
+    private float nextFireTime = 0f;
+    public static int noOfClicks = 0;
+    float lastClickedTime = 0;
+    float maxComboDelay = 1;
 
     private void Start()
     {
@@ -39,59 +36,56 @@ public class PlayerAttack : MonoBehaviour
     private void Update()
     {
         //SetWeaponStats();
-        HandleAttack();
-    }
+       // HandleAttack();
 
-    private void HandleAttack()
-    {
-        //combo system is not working here. wonky
+        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && animator.GetCurrentAnimatorStateInfo(0).IsName("combo 1")){
+            animator.SetBool("hit1", false);
+            animator.SetBool("IsAttacking", false);
+        }
+        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && animator.GetCurrentAnimatorStateInfo(0).IsName("combo 2")){
+            animator.SetBool("hit2", false);
+            animator.SetBool("IsAttacking", false);
+        }
+        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && animator.GetCurrentAnimatorStateInfo(0).IsName("combo 3")){
+            animator.SetBool("hit3", false);
+            animator.SetBool("IsAttacking", false);
+            noOfClicks = 0;
+        }
 
-        // Check for "F" press and the attack cooldown
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            if(Time.time - lastAttackTime > attackCooldown){
-                if(Time.time - lastAttackTime < comboTimer){
-                    comboCounter++;
-                    if(comboCounter <= maxCombo){
-                        StartAttack(comboCounter);
-                    }
-                    else{
-                        ResetCombo();
-                        StartAttack(comboCounter);
-                    }
-                }
-                else{
-                    ResetCombo();
-                    StartAttack(comboCounter);
-                }
+        if(Time.time - lastClickedTime > maxComboDelay){
+            noOfClicks = 0;
+        }
+        if(Time.time > nextFireTime){
+            if(Input.GetMouseButtonDown(0)){
+                OnClick();
             }
         }
+
     }
 
-    private void StartAttack(int comboCounter)
-    {
-        animator.SetBool("IsAttacking", true);
-        string hitNum = "hit" + comboCounter.ToString();
-        animator.SetBool(hitNum, true);
-        Debug.Log("in StartAttack: " + hitNum);
-        lastAttackTime = Time.time;
-    }
+    private void OnClick(){
+        lastClickedTime = Time.time;
+        noOfClicks++;
+        if(noOfClicks == 1){
+            animator.SetBool("IsAttacking", true);
+            animator.SetBool("hit1", true);
+            Debug.Log("turning hit1 true");
+        }
+        noOfClicks = Mathf.Clamp(noOfClicks, 0, 3);
 
-    public void EndAttack(int Counter){
+        if(noOfClicks >= 2 && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && animator.GetCurrentAnimatorStateInfo(0).IsName("combo 1")){
+            animator.SetBool("IsAttacking", true);
+            animator.SetBool("hit1", false);
+            animator.SetBool("hit2", true);
+            Debug.Log("turning hit2 true");
+        }
+        if(noOfClicks >= 3 && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && animator.GetCurrentAnimatorStateInfo(0).IsName("combo 2")){
+            animator.SetBool("IsAttacking", true);
+            animator.SetBool("hit2", false);
+            animator.SetBool("hit3", true);
+            Debug.Log("turning hit3 true");
+        }
 
-        animator.SetBool("IsAttacking", false);
-
-        // if(comboCounter >= maxCombo){
-        //     ResetCombo();
-        // }
-
-        string hitNum = "hit" + Counter.ToString();
-        Debug.Log("hitNum: " + hitNum);
-        animator.SetBool(hitNum, false);
-    }
-    
-    private void ResetCombo(){
-        comboCounter = 1;
     }
 
     public void KnockbackEnemy(Transform enemy)
