@@ -17,7 +17,7 @@ public class PlayerAttack : MonoBehaviour
     private float nextFireTime = 0f;
     public static int noOfClicks = 0;
     float lastClickedTime = 0;
-    float maxComboDelay = 1;
+    float maxComboDelay = 0.75f;
 
     private void Start()
     {
@@ -35,28 +35,24 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        //SetWeaponStats();
-       // HandleAttack();
-
         if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && animator.GetCurrentAnimatorStateInfo(0).IsName("combo 1")){
             animator.SetBool("hit1", false);
-            animator.SetBool("IsAttacking", false);
         }
         if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && animator.GetCurrentAnimatorStateInfo(0).IsName("combo 2")){
             animator.SetBool("hit2", false);
-            animator.SetBool("IsAttacking", false);
         }
         if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && animator.GetCurrentAnimatorStateInfo(0).IsName("combo 3")){
             animator.SetBool("hit3", false);
-            animator.SetBool("IsAttacking", false);
             noOfClicks = 0;
         }
 
         if(Time.time - lastClickedTime > maxComboDelay){
             noOfClicks = 0;
+            animator.SetBool("combo", false);
         }
         if(Time.time > nextFireTime){
             if(Input.GetMouseButtonDown(0)){
+                animator.SetBool("combo", true);
                 OnClick();
             }
         }
@@ -67,23 +63,17 @@ public class PlayerAttack : MonoBehaviour
         lastClickedTime = Time.time;
         noOfClicks++;
         if(noOfClicks == 1){
-            animator.SetBool("IsAttacking", true);
             animator.SetBool("hit1", true);
-            Debug.Log("turning hit1 true");
         }
         noOfClicks = Mathf.Clamp(noOfClicks, 0, 3);
 
         if(noOfClicks >= 2 && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && animator.GetCurrentAnimatorStateInfo(0).IsName("combo 1")){
-            animator.SetBool("IsAttacking", true);
             animator.SetBool("hit1", false);
             animator.SetBool("hit2", true);
-            Debug.Log("turning hit2 true");
         }
         if(noOfClicks >= 3 && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && animator.GetCurrentAnimatorStateInfo(0).IsName("combo 2")){
-            animator.SetBool("IsAttacking", true);
             animator.SetBool("hit2", false);
             animator.SetBool("hit3", true);
-            Debug.Log("turning hit3 true");
         }
 
     }
