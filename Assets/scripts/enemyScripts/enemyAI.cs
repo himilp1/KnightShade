@@ -15,7 +15,7 @@ public class EnemyAI : MonoBehaviour
     public int damage;//enemy Atk value
     public float atkCooldown;
     public bool isDead;
-    public int enemyCost;
+    public int enemyCost;  
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();

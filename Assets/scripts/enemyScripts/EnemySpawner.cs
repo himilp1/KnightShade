@@ -56,7 +56,8 @@ public class EnemySpawner : MonoBehaviour
         }
         else
         {
-            if(enemyCount.Length <= 0){
+            if (enemyCount.Length <= 0) 
+            {
                 currWave += 1;
                 waveGroupSize += 1;
                 currentWaveText.SetWave(currWave);
@@ -68,6 +69,10 @@ public class EnemySpawner : MonoBehaviour
     public void GenerateWave()
     {
         waveValue = currWave * 10;
+        if (currWave % 3 == 0)
+        {
+            waveValue += 10;
+        }
         GenerateEnemies();
 
         // Start the wave timer.
@@ -92,6 +97,15 @@ public class EnemySpawner : MonoBehaviour
             {
                 break;
             }
+        }
+
+        if (currWave % 3 == 0)
+        {
+            int randEnemyCost = enemies[3].cost;
+            generatedEnemies.Add(enemies[3].enemyPrefab);
+            waveValue -= randEnemyCost;
+            // bossText = HUD.GetComponent<BossText>();
+
         }
         enemiesToSpawn.Clear();
         enemiesToSpawn = generatedEnemies;
