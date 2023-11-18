@@ -10,7 +10,7 @@ public class WeaponPickup : MonoBehaviour
     private PlayerPointsTracker playerPointsTracker;
 
     private bool isPlayerInRange = false;
-    public int weaponCost = 30;
+    public int weaponCost = 0;
 
     private void Start()
     {

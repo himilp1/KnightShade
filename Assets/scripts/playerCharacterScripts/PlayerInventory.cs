@@ -78,6 +78,7 @@ public class PlayerInventory : MonoBehaviour
         }
         else
         {
+            Debug.Log("melee Weapon selected");
             if (currentMeleeWeapon && currentMeleeWeapon != newWeapon)
             {
                 currentMeleeWeapon.SetActive(false);
