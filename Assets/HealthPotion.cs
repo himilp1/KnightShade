@@ -17,5 +17,6 @@ public class HealthPotion : MonoBehaviour
         playerHealth.maxHealth = 400;
         healthBar.SetMaxHealth(playerHealth.maxHealth);
         Debug.Log("Consumed Potion");
+        gameObject.SetActive(false);
     }
 }
