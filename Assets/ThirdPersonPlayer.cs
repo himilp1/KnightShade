@@ -170,6 +170,22 @@ public class ThirdPersonPlayer : MonoBehaviour
                 }
             }
 
+            else if (hit.collider.CompareTag("RollPotion"))
+            {
+                int rollPotionCost = 2;
+
+                // Show the text element with a custom message
+                interactionText.SetText("Press 'E' to consume potion and gain roll ability. \n (" + rollPotionCost + " Points)");
+                interactionText.ShowText();
+
+                if (Input.GetKeyDown(KeyCode.E) && pointsTracker.currentPoints >= rollPotionCost)
+                {
+                    RollPotion rollPotion = hit.collider.GetComponent<RollPotion>();
+                    rollPotion.Consume();
+                    pointsTracker.SpendPoints(rollPotionCost);
+                }
+            }
+
             else
             {
                 // Hide the text element if not interacting with a castle gate
