@@ -140,7 +140,7 @@ public class ThirdPersonPlayer : MonoBehaviour
             // Check if the hit object is a mystery box
             else if (hit.collider.CompareTag("MysteryBox"))
             {
-                int mysteryBoxCost = 2;
+                int mysteryBoxCost = 50;
 
                 // Show the text element with a custom message
                 interactionText.SetText("Press 'E' to get a random rare weapon. \n (" + mysteryBoxCost + " Points)");
@@ -156,7 +156,7 @@ public class ThirdPersonPlayer : MonoBehaviour
 
             else if (hit.collider.CompareTag("HealthPotion"))
             {
-                int healthPotionCost = 2;
+                int healthPotionCost = 20;
 
                 // Show the text element with a custom message
                 interactionText.SetText("Press 'E' to consume health potion. \n (" + healthPotionCost + " Points)");
@@ -172,7 +172,7 @@ public class ThirdPersonPlayer : MonoBehaviour
 
             else if (hit.collider.CompareTag("RollPotion"))
             {
-                int rollPotionCost = 2;
+                int rollPotionCost = 30;
 
                 // Show the text element with a custom message
                 interactionText.SetText("Press 'E' to consume potion and gain roll ability. \n (" + rollPotionCost + " Points)");

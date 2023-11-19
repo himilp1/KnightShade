@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4503535, g: 0.5003732, b: 0.5752818, a: 1}
+  m_IndirectSpecularColor: {r: 0.4503531, g: 0.5003724, b: 0.57528085, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -6207,7 +6207,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 141668753}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.17456684, y: 0.000000018941929, z: -0.0000000033581966, w: 0.98464537}
+  m_LocalRotation: {x: 0.17456684, y: -0.000000018941938, z: 0.0000000033581977, w: 0.98464537}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -21005,7 +21005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac849f235d102b44ae1c1390270c550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atkDmg: 25
+  atkDmg: 35
   atkSpd: 1.2
   weaponType: 1
 --- !u!114 &485166780
@@ -21569,7 +21569,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6873363103045821172, guid: 40cdcc2da7354eeebbd5d293fda195de, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.997442
+      value: 1.23
       objectReference: {fileID: 0}
     - target: {fileID: 6873363103045821172, guid: 40cdcc2da7354eeebbd5d293fda195de, type: 3}
       propertyPath: m_LocalPosition.y
@@ -21577,7 +21577,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6873363103045821172, guid: 40cdcc2da7354eeebbd5d293fda195de, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -50.376823
+      value: -0.54
       objectReference: {fileID: 0}
     - target: {fileID: 6873363103045821172, guid: 40cdcc2da7354eeebbd5d293fda195de, type: 3}
       propertyPath: m_LocalRotation.w
@@ -21638,7 +21638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac849f235d102b44ae1c1390270c550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atkDmg: 20
+  atkDmg: 30
   atkSpd: 0.9
   weaponType: 2
 --- !u!1001 &505697919
@@ -27115,7 +27115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac849f235d102b44ae1c1390270c550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atkDmg: 10
+  atkDmg: 20
   atkSpd: 0.8
   weaponType: 0
 --- !u!114 &645041691
@@ -28530,7 +28530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac849f235d102b44ae1c1390270c550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atkDmg: 20
+  atkDmg: 30
   atkSpd: 0.9
   weaponType: 2
 --- !u!114 &693217524
@@ -29398,7 +29398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac849f235d102b44ae1c1390270c550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atkDmg: 16
+  atkDmg: 20
   atkSpd: 0.3
   weaponType: 1
 --- !u!114 &718880855
@@ -38847,7 +38847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac849f235d102b44ae1c1390270c550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atkDmg: 15
+  atkDmg: 25
   atkSpd: 0.5
   weaponType: 1
 --- !u!1001 &965826960
@@ -54059,15 +54059,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5830895124448950544, guid: 37f31b108b634900b39cec423fd2fd5c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -27.46
+      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 5830895124448950544, guid: 37f31b108b634900b39cec423fd2fd5c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.604
+      value: -22
       objectReference: {fileID: 0}
     - target: {fileID: 5830895124448950544, guid: 37f31b108b634900b39cec423fd2fd5c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -31.592
+      value: -799
       objectReference: {fileID: 0}
     - target: {fileID: 5830895124448950544, guid: 37f31b108b634900b39cec423fd2fd5c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -62142,7 +62142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac849f235d102b44ae1c1390270c550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atkDmg: 25
+  atkDmg: 35
   atkSpd: 1.2
   weaponType: 1
 --- !u!114 &1565739610
@@ -62190,7 +62190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac849f235d102b44ae1c1390270c550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atkDmg: 16
+  atkDmg: 20
   atkSpd: 0.3
   weaponType: 1
 --- !u!114 &1565739613
@@ -64643,8 +64643,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.42962903, y: 1.9619633, z: 0.52898264}
-  m_Center: {x: 0.012973658, y: 0.94002974, z: 0.014099085}
+  m_Size: {x: 0.7243883, y: 3.034657, z: 0.8001892}
+  m_Center: {x: -0.033469193, y: 1.4763767, z: -0.08954154}
 --- !u!4 &1615770297
 Transform:
   m_ObjectHideFlags: 0
@@ -64654,7 +64654,7 @@ Transform:
   m_GameObject: {fileID: 1615770294}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.33, y: 0.209, z: 32.66}
+  m_LocalPosition: {x: -27.679, y: 2.104, z: -31.879}
   m_LocalScale: {x: 0.94697, y: 0.94697, z: 0.94697}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -69348,8 +69348,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1738125024}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.947, y: 0.725, z: 31.33}
+  m_LocalRotation: {x: -0, y: 0.85670376, z: -0, w: 0.51580876}
+  m_LocalPosition: {x: -33.83, y: 0.841, z: 12.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -69357,7 +69357,7 @@ Transform:
   - {fileID: 1505883520}
   - {fileID: 576629938}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 117.897, z: 0}
 --- !u!114 &1738125029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70215,8 +70215,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.33525848, y: 1.6938822, z: 0.3812561}
-  m_Center: {x: 0.01747322, y: 0.8075552, z: -0.040332794}
+  m_Size: {x: 0.6827841, y: 3.4113126, z: 0.6431174}
+  m_Center: {x: -0.023030758, y: 1.6662703, z: -0.0050544143}
 --- !u!4 &1757550547
 Transform:
   m_ObjectHideFlags: 0
@@ -70226,7 +70226,7 @@ Transform:
   m_GameObject: {fileID: 1757550544}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.27, y: 0.36, z: 33.49}
+  m_LocalPosition: {x: 6.231, y: 3.094, z: -0.716}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -76224,7 +76224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac849f235d102b44ae1c1390270c550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atkDmg: 15
+  atkDmg: 25
   atkSpd: 0.5
   weaponType: 1
 --- !u!1001 &1938637816
@@ -82136,7 +82136,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5830895124448950544, guid: 37f31b108b634900b39cec423fd2fd5c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.997443
+      value: 1.69
       objectReference: {fileID: 0}
     - target: {fileID: 5830895124448950544, guid: 37f31b108b634900b39cec423fd2fd5c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -82144,7 +82144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5830895124448950544, guid: 37f31b108b634900b39cec423fd2fd5c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.07682419
+      value: -0.16
       objectReference: {fileID: 0}
     - target: {fileID: 5830895124448950544, guid: 37f31b108b634900b39cec423fd2fd5c, type: 3}
       propertyPath: m_LocalRotation.w
