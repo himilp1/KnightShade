@@ -118,7 +118,7 @@ public class PlayerHealth : MonoBehaviour
         "\n\nDamage Taken: " + statTracker.totalDamageTaken +
         "\n\nPoints Earned: " + statTracker.totalPointsEarned +
         "\n\nPoints Spent: " + statTracker.totalPointsSpent +
-        "\n\nPress Enter to return to main menu";
+        "\n\nPress Enter to Return to\nMain Menu";
 
         summaryScreen.SetActive(true);
         inSummaryScreen = true;

@@ -7110,8 +7110,8 @@ MonoBehaviour:
     Press Enter to
     return to Main Menu'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fe504b07b9564458bb5bd698f080ff15, type: 2}
+  m_sharedMaterial: {fileID: 841659671359346314, guid: fe504b07b9564458bb5bd698f080ff15, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7135,13 +7135,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -27148,7 +27148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 636139856}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22776727, y: -0.000000018731678, z: 0.000000004381631, w: 0.9737156}
+  m_LocalRotation: {x: 0.22776727, y: 0.000000018731674, z: -0.0000000043816306, w: 0.9737156}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -40211,7 +40211,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 993704566}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22882988, y: -0.00000003607689, z: 0.000000008480488, w: 0.97346646}
+  m_LocalRotation: {x: 0.22882988, y: 0.000000034336193, z: -0.000000008071307, w: 0.97346646}
   m_LocalPosition: {x: -9.762, y: 5.2029004, z: 48.3414}
   m_LocalScale: {x: -1.8726, y: -1.8726, z: -1.8726}
   m_ConstrainProportionsScale: 0
@@ -54181,7 +54181,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 102.78, y: 115}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1374228740
 MonoBehaviour:
@@ -54203,7 +54203,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: b1394fd01969547f8a46886c7aa2f160, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
