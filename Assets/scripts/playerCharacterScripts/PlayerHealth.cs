@@ -6,8 +6,8 @@ public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth;
     public int currentHealth;
-    public int regenRate = 1; // Health regen per second
-    public float regenDelay = 5f; // Time without damage before regen starts
+    public int regenRate; // Health regen per second
+    public float regenDelay; // Time without damage before regen starts
 
     public Animator animator;
     public HealthBar healthBar;
@@ -15,6 +15,7 @@ public class PlayerHealth : MonoBehaviour
 
     private bool canRegenerate;
     private float lastDamageTime;
+    private float lastRegenTime;
     private DeathText deathText;
 
     void Start()
@@ -54,6 +55,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    /*
     void RegenerateHealth()
     {
         if (Time.time - lastDamageTime > regenDelay)
@@ -61,6 +63,22 @@ public class PlayerHealth : MonoBehaviour
             // Eventually change to use regen rate to regenerate over time rather than instantly
             currentHealth = maxHealth;
             healthBar.SetHealth(currentHealth);
+        }
+    }
+    */
+
+    void RegenerateHealth()
+    {
+        if (Time.time - lastDamageTime > regenDelay)
+        {
+            if (Time.time - lastRegenTime > regenRate)
+            {
+                lastRegenTime = Time.time; // Record the time at which regen happens
+                currentHealth = (int)Mathf.Min(currentHealth + regenRate, maxHealth);
+                healthBar.SetHealth(currentHealth);
+
+                Debug.Log("Regenerating Health");
+            }
         }
     }
 
