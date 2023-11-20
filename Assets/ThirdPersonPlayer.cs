@@ -208,6 +208,22 @@ public class ThirdPersonPlayer : MonoBehaviour
                 }
             }
 
+            else if (hit.collider.CompareTag("Anvil"))
+            {
+                int anvilCost = 2;
+
+                // Show the text element with a custom message
+                interactionText.SetText("Press 'E' to upgrade current weapon. \n (" + anvilCost + " Points)");
+                interactionText.ShowText();
+
+                if (Input.GetKeyDown(KeyCode.E) && pointsTracker.currentPoints >= anvilCost)
+                {
+                    Anvil anvil = hit.collider.GetComponent<Anvil>();
+                    anvil.Use();
+                    pointsTracker.SpendPoints(anvilCost);
+                }
+            }
+
             else
             {
                 // Hide the text element if not interacting with a castle gate

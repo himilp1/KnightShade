@@ -11,6 +11,7 @@ TagManager:
   - MysteryBox
   - HealthPotion
   - RollPotion
+  - Anvil
   layers:
   - Default
   - TransparentFX
