@@ -19,6 +19,10 @@ public class EnemySpawner : MonoBehaviour
     private int currentLocationIndex; //keeps track of current spawn location
     private int currentGroupSize;
     private int waveGroupSize;
+
+    private GameObject player;
+    private StatTracker statTracker;
+
     void Start()
     {
         currentWaveText = HUD.GetComponent<CurrentWaveText>();
@@ -26,11 +30,14 @@ public class EnemySpawner : MonoBehaviour
         spawnInterval = 1.0f; // Set the spawn interval to 5 seconds.
         currentLocationIndex = 0; // Start at the first spawn location.
         waveGroupSize = 2;
+
+        player = GameObject.FindGameObjectWithTag("Player");
+        statTracker = player.GetComponent<StatTracker>();
     }
 
     void Update()
     {
-        GameObject [] enemyCount = GameObject.FindGameObjectsWithTag("enemy");
+        GameObject[] enemyCount = GameObject.FindGameObjectsWithTag("enemy");
         if (enemiesToSpawn.Count > 0)
         {
             if (spawnTimer <= 0)
@@ -56,10 +63,12 @@ public class EnemySpawner : MonoBehaviour
         }
         else
         {
-            if(enemyCount.Length <= 0){
+            if (enemyCount.Length <= 0)
+            {
                 currWave += 1;
                 waveGroupSize += 1;
                 currentWaveText.SetWave(currWave);
+                statTracker.SurvivedWave();
                 GenerateWave();
             }
         }

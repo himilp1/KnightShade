@@ -12,6 +12,8 @@ public class PlayerHealth : MonoBehaviour
     public Animator animator;
     public HealthBar healthBar;
     public GameObject HUD;
+    private GameObject player;
+    private StatTracker statTracker;
 
     private bool canRegenerate;
     private float lastDamageTime;
@@ -27,6 +29,9 @@ public class PlayerHealth : MonoBehaviour
         deathText = HUD.GetComponent<DeathText>();
         deathText.HideText();
 
+        player = GameObject.FindGameObjectWithTag("Player");
+        statTracker = player.GetComponent<StatTracker>();
+
         canRegenerate = false;
     }
 
@@ -41,6 +46,7 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        statTracker.AddDamageTaken(damage);
         healthBar.SetHealth(currentHealth);
 
         lastDamageTime = Time.time; // Record the time of the last damage

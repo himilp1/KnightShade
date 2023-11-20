@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour 
+public class EnemyHealth : MonoBehaviour
 {
     public int maxHealth = 100;
     public int currentHealth;
@@ -8,29 +8,36 @@ public class EnemyHealth : MonoBehaviour
     private UnityEngine.AI.NavMeshAgent enemy;
     private GameObject player;
     [SerializeField] floatingHealthBar healthBar;
-    private void Start() 
+
+    private StatTracker statTracker;
+
+    private void Start()
     {
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();  // Initialize the animator reference
         player = GameObject.FindGameObjectWithTag("Player");
-        if(player == null){
+        statTracker = player.GetComponent<StatTracker>();
+
+        if (player == null)
+        {
             Debug.LogError("No Player Found!");
         }
         healthBar = GetComponentInChildren<floatingHealthBar>();
     }
 
-    public void TakeDamage(int damage) 
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        statTracker.AddDamageDone(damage);
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
-        if(currentHealth <= 0) 
+        if (currentHealth <= 0)
         {
             Die();
             GetComponent<EnemyHealth>().enabled = false;
         }
     }
 
-    private void Die() 
+    private void Die()
     {
         // Disable NavMeshAgent
         enemy = GetComponent<UnityEngine.AI.NavMeshAgent>();
@@ -50,6 +57,7 @@ public class EnemyHealth : MonoBehaviour
     {
         int points = GetComponent<EnemyAI>().enemyCost;
         player.GetComponent<PlayerPointsTracker>().AddPoints(points);
+        statTracker.AddPointsEarned(points);
         Debug.Log("about to add points to player, points to give: " + points);
         Destroy(gameObject);
     }

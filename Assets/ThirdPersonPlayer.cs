@@ -11,6 +11,7 @@ public class ThirdPersonPlayer : MonoBehaviour
     public CharacterController controller;
     public Transform cam;
     public CinemachineFreeLook freeLook;
+    private bool cameraLocked = false;
 
     public float speed = 6f;
 
@@ -24,10 +25,10 @@ public class ThirdPersonPlayer : MonoBehaviour
     private PlayerPointsTracker pointsTracker;
     public GameObject HUD;
     public Animator animator;
+    public StatTracker statTracker;
 
     public Vector3 moveDir;
 
-    private bool cameraLocked = false;
 
     private void Start()
     {
@@ -156,6 +157,7 @@ public class ThirdPersonPlayer : MonoBehaviour
                     CastleGate castleGate = hit.collider.GetComponent<CastleGate>();
                     castleGate.Open();
                     pointsTracker.SpendPoints(castleGateCost);
+                    statTracker.AddPointsSpent(castleGateCost);
                 }
             }
 
@@ -173,6 +175,7 @@ public class ThirdPersonPlayer : MonoBehaviour
                     MysteryBox mysteryBox = hit.collider.GetComponent<MysteryBox>();
                     mysteryBox.Open();
                     pointsTracker.SpendPoints(mysteryBoxCost);
+                    statTracker.AddPointsSpent(mysteryBoxCost);
                 }
             }
 
@@ -189,6 +192,7 @@ public class ThirdPersonPlayer : MonoBehaviour
                     HealthPotion healthPotion = hit.collider.GetComponent<HealthPotion>();
                     healthPotion.Consume();
                     pointsTracker.SpendPoints(healthPotionCost);
+                    statTracker.AddPointsSpent(healthPotionCost);
                 }
             }
 
@@ -205,6 +209,7 @@ public class ThirdPersonPlayer : MonoBehaviour
                     RollPotion rollPotion = hit.collider.GetComponent<RollPotion>();
                     rollPotion.Consume();
                     pointsTracker.SpendPoints(rollPotionCost);
+                    statTracker.AddPointsSpent(rollPotionCost);
                 }
             }
 
@@ -221,6 +226,7 @@ public class ThirdPersonPlayer : MonoBehaviour
                     Anvil anvil = hit.collider.GetComponent<Anvil>();
                     anvil.Use();
                     pointsTracker.SpendPoints(anvilCost);
+                    statTracker.AddPointsSpent(anvilCost);
                 }
             }
 
