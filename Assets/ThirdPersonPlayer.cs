@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class ThirdPersonPlayer : MonoBehaviour
 {
     public CharacterController controller;
     public Transform cam;
+    public CinemachineFreeLook freeLook;
 
     public float speed = 6f;
 
@@ -24,6 +26,8 @@ public class ThirdPersonPlayer : MonoBehaviour
     public Animator animator;
 
     public Vector3 moveDir;
+
+    private bool cameraLocked = false;
 
     private void Start()
     {
@@ -49,8 +53,6 @@ public class ThirdPersonPlayer : MonoBehaviour
             Debug.Log("InteractionText component found.");
         }
 
-
-
         // Initially hide the text.
         interactionText.HideText();
     }
@@ -60,6 +62,26 @@ public class ThirdPersonPlayer : MonoBehaviour
     {
         HandleMovement();
         HandleInteractions();
+        HandleCameraLock();
+    }
+
+    private void HandleCameraLock()
+    {
+        if (Input.GetKeyDown(KeyCode.V) && cameraLocked == false)
+        {
+            freeLook.m_YAxis.m_MaxSpeed = 0;
+            freeLook.m_XAxis.m_MaxSpeed = 0;
+            cameraLocked = true;
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.V) && cameraLocked == true)
+        {
+            freeLook.m_YAxis.m_MaxSpeed = 2;
+            freeLook.m_XAxis.m_MaxSpeed = 250;
+            cameraLocked = false;
+            return;
+        }
     }
 
     private void HandleMovement()
