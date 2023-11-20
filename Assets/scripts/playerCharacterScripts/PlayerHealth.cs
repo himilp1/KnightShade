@@ -71,7 +71,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (Time.time - lastDamageTime > regenDelay)
         {
-            if (Time.time - lastRegenTime > regenRate)
+            if (Time.time - lastRegenTime > 1.0) // Make sure a second has passed
             {
                 lastRegenTime = Time.time; // Record the time at which regen happens
                 currentHealth = (int)Mathf.Min(currentHealth + regenRate, maxHealth);
