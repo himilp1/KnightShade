@@ -5,6 +5,7 @@ using UnityEngine.AI;
 public class EnemySpawner : MonoBehaviour
 {
     public List<Enemy> enemies = new List<Enemy>();
+    public List<Enemy> bossEnemies = new List<Enemy>();
     public int currWave;
     public int waveValue;
     private List<GameObject> enemiesToSpawn = new List<GameObject>();
