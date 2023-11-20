@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,11 +15,14 @@ public class PlayerHealth : MonoBehaviour
     public GameObject HUD;
     private GameObject player;
     private StatTracker statTracker;
+    public GameObject summaryScreen;
 
     private bool canRegenerate;
     private float lastDamageTime;
     private float lastRegenTime;
     private DeathText deathText;
+
+    private bool inSummaryScreen = false;
 
     void Start()
     {
@@ -28,6 +32,8 @@ public class PlayerHealth : MonoBehaviour
         animator = GetComponent<Animator>();
         deathText = HUD.GetComponent<DeathText>();
         deathText.HideText();
+
+        summaryScreen.SetActive(false);
 
         player = GameObject.FindGameObjectWithTag("Player");
         statTracker = player.GetComponent<StatTracker>();
@@ -40,6 +46,11 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth < maxHealth && canRegenerate)
         {
             RegenerateHealth();
+        }
+
+        if (inSummaryScreen && Input.GetKeyDown(KeyCode.Return))
+        {
+            RetrunToMenu();
         }
     }
 
@@ -95,7 +106,22 @@ public class PlayerHealth : MonoBehaviour
         GetComponent<ThirdPersonPlayer>().enabled = false;
         animator.SetBool("isDead", true);
         deathText.ShowText();
-        Invoke("RetrunToMenu", 2.0f);
+        Invoke("DisplaySummary", 2.0f);
+    }
+
+    private void DisplaySummary()
+    {
+        GameObject summaryTextObject = summaryScreen.transform.GetChild(1).gameObject;
+        summaryTextObject.GetComponent<TMP_Text>().text =
+        "Game Over \n\n\n Waves Survived: " + statTracker.wavesSurvived +
+        "\n\nDamage Dealt: " + statTracker.totalDamageDone +
+        "\n\nDamage Taken: " + statTracker.totalDamageTaken +
+        "\n\nPoints Earned: " + statTracker.totalPointsEarned +
+        "\n\nPoints Spent: " + statTracker.totalPointsSpent +
+        "\n\nPress Enter to return to main menu";
+
+        summaryScreen.SetActive(true);
+        inSummaryScreen = true;
     }
 
     private void RetrunToMenu()
