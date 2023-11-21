@@ -52,7 +52,7 @@ public class WeaponPickup : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             pickupPrompt.gameObject.SetActive(true);
-            pickupPrompt.text = "Press M to Pickup \n (" + weaponCost + " Points)";
+            pickupPrompt.text = "Press M to Pickup";
             isPlayerInRange = true;
         }
     }
