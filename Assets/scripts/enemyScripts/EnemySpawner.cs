@@ -21,6 +21,10 @@ public class EnemySpawner : MonoBehaviour
     private int currentLocationIndex; //keeps track of current spawn location
     private int currentGroupSize;
     private int waveGroupSize;
+
+    private GameObject player;
+    private StatTracker statTracker;
+
     private int activatedSpawns;
 
     void Start()
@@ -30,13 +34,14 @@ public class EnemySpawner : MonoBehaviour
         spawnInterval = 1.0f; // Set the spawn interval to 5 seconds.
         currentLocationIndex = 0; // Start at the first spawn location.
         waveGroupSize = 2;
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        activatedSpawns = 3;
+        player = GameObject.FindGameObjectWithTag("Player");
+        activatedSpawns = 3;;
+        statTracker = player.GetComponent<StatTracker>();
     }
 
     void Update()
     {
-        GameObject [] enemyCount = GameObject.FindGameObjectsWithTag("enemy");
+        GameObject[] enemyCount = GameObject.FindGameObjectsWithTag("enemy");
         if (enemiesToSpawn.Count > 0)
         {
             if (spawnTimer <= 0)
@@ -64,10 +69,12 @@ public class EnemySpawner : MonoBehaviour
         }
         else
         {
-            if(enemyCount.Length <= 0){
+            if (enemyCount.Length <= 0)
+            {
                 currWave += 1;
                 waveGroupSize += 1;
                 currentWaveText.SetWave(currWave);
+                statTracker.SurvivedWave();
                 GenerateWave();
             }
         }
@@ -87,7 +94,7 @@ public class EnemySpawner : MonoBehaviour
 
         //float distance = Vector3.Distance(agent.transform.position, player.position);
         foreach(Transform spawnLocation in spawnLocations){
-            float distance = Vector3.Distance(spawnLocation.position, player.position);
+            float distance = Vector3.Distance(spawnLocation.position, player.transform.position);
             Location currentLocation = new Location{
                 location = spawnLocation,
                 distance = distance

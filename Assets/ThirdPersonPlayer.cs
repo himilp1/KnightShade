@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using Microsoft.Unity.VisualStudio.Editor;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class ThirdPersonPlayer : MonoBehaviour
     public CharacterController controller;
     public Transform cam;
     public CinemachineFreeLook freeLook;
+    private bool cameraLocked = false;
 
     public float speed = 6f;
 
@@ -21,13 +23,14 @@ public class ThirdPersonPlayer : MonoBehaviour
     private Vector3 velocity;
 
     private InteractionText interactionText;
+    public CanvasGroup interactTextBackground;
     private PlayerPointsTracker pointsTracker;
     public GameObject HUD;
     public Animator animator;
+    public StatTracker statTracker;
 
     public Vector3 moveDir;
 
-    private bool cameraLocked = false;
 
     private void Start()
     {
@@ -55,6 +58,7 @@ public class ThirdPersonPlayer : MonoBehaviour
 
         // Initially hide the text.
         interactionText.HideText();
+        interactTextBackground.alpha = 0;
     }
 
     // Update is called once per frame
@@ -119,7 +123,6 @@ public class ThirdPersonPlayer : MonoBehaviour
         {
             // Set the IsRunning parameter to false in the Animator
             animator.SetBool("IsRunning", false);
-
         }
     }
 
@@ -149,6 +152,7 @@ public class ThirdPersonPlayer : MonoBehaviour
                 // Show the text element with a custom message
                 interactionText.SetText("Press 'E' to open castle gate. \n (" + castleGateCost + " Points)");
                 interactionText.ShowText();
+                interactTextBackground.alpha = 1;
 
                 if (Input.GetKeyDown(KeyCode.E) && pointsTracker.currentPoints >= castleGateCost)
                 {
@@ -156,6 +160,7 @@ public class ThirdPersonPlayer : MonoBehaviour
                     CastleGate castleGate = hit.collider.GetComponent<CastleGate>();
                     castleGate.Open();
                     pointsTracker.SpendPoints(castleGateCost);
+                    statTracker.AddPointsSpent(castleGateCost);
                 }
             }
 
@@ -167,12 +172,14 @@ public class ThirdPersonPlayer : MonoBehaviour
                 // Show the text element with a custom message
                 interactionText.SetText("Press 'E' to get a random rare weapon. \n (" + mysteryBoxCost + " Points)");
                 interactionText.ShowText();
+                interactTextBackground.alpha = 1;
 
                 if (Input.GetKeyDown(KeyCode.E) && pointsTracker.currentPoints >= mysteryBoxCost)
                 {
                     MysteryBox mysteryBox = hit.collider.GetComponent<MysteryBox>();
                     mysteryBox.Open();
                     pointsTracker.SpendPoints(mysteryBoxCost);
+                    statTracker.AddPointsSpent(mysteryBoxCost);
                 }
             }
 
@@ -183,12 +190,14 @@ public class ThirdPersonPlayer : MonoBehaviour
                 // Show the text element with a custom message
                 interactionText.SetText("Press 'E' to consume health potion. \n (" + healthPotionCost + " Points)");
                 interactionText.ShowText();
+                interactTextBackground.alpha = 1;
 
                 if (Input.GetKeyDown(KeyCode.E) && pointsTracker.currentPoints >= healthPotionCost)
                 {
                     HealthPotion healthPotion = hit.collider.GetComponent<HealthPotion>();
                     healthPotion.Consume();
                     pointsTracker.SpendPoints(healthPotionCost);
+                    statTracker.AddPointsSpent(healthPotionCost);
                 }
             }
 
@@ -199,12 +208,32 @@ public class ThirdPersonPlayer : MonoBehaviour
                 // Show the text element with a custom message
                 interactionText.SetText("Press 'E' to consume potion and gain roll ability. \n (" + rollPotionCost + " Points)");
                 interactionText.ShowText();
+                interactTextBackground.alpha = 1;
 
                 if (Input.GetKeyDown(KeyCode.E) && pointsTracker.currentPoints >= rollPotionCost)
                 {
                     RollPotion rollPotion = hit.collider.GetComponent<RollPotion>();
                     rollPotion.Consume();
                     pointsTracker.SpendPoints(rollPotionCost);
+                    statTracker.AddPointsSpent(rollPotionCost);
+                }
+            }
+
+            else if (hit.collider.CompareTag("Anvil"))
+            {
+                int anvilCost = 2;
+
+                // Show the text element with a custom message
+                interactionText.SetText("Press 'E' to upgrade current weapon. \n (" + anvilCost + " Points)");
+                interactionText.ShowText();
+                interactTextBackground.alpha = 1;
+
+                if (Input.GetKeyDown(KeyCode.E) && pointsTracker.currentPoints >= anvilCost)
+                {
+                    Anvil anvil = hit.collider.GetComponent<Anvil>();
+                    anvil.Use();
+                    pointsTracker.SpendPoints(anvilCost);
+                    statTracker.AddPointsSpent(anvilCost);
                 }
             }
 
@@ -212,12 +241,14 @@ public class ThirdPersonPlayer : MonoBehaviour
             {
                 // Hide the text element if not interacting with a castle gate
                 interactionText.HideText();
+                interactTextBackground.alpha = 0;
             }
         }
         else
         {
             // Hide the text element if no object is hit
             interactionText.HideText();
+            interactTextBackground.alpha = 0;
         }
     }
 }
