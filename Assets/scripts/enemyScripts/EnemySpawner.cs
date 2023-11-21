@@ -10,7 +10,6 @@ public class EnemySpawner : MonoBehaviour
     private List<GameObject> enemiesToSpawn = new List<GameObject>();
     public List<Transform> spawnLocations = new List<Transform>();
     public List<Transform> chosenSpawns = new List<Transform>();
-    public Transform player;
     private CurrentWaveText currentWaveText;
     public GameObject HUD;
     public NavMeshSurface surface;
@@ -35,7 +34,7 @@ public class EnemySpawner : MonoBehaviour
         currentLocationIndex = 0; // Start at the first spawn location.
         waveGroupSize = 2;
         player = GameObject.FindGameObjectWithTag("Player");
-        activatedSpawns = 3;;
+        activatedSpawns = 3; ;
         statTracker = player.GetComponent<StatTracker>();
     }
 
@@ -89,13 +88,16 @@ public class EnemySpawner : MonoBehaviour
         waveTimer = waveDuration;
     }
 
-    public void PickSpawnLocations(){
+    public void PickSpawnLocations()
+    {
         List<Location> possibleSpots = new List<Location>();
 
         //float distance = Vector3.Distance(agent.transform.position, player.position);
-        foreach(Transform spawnLocation in spawnLocations){
+        foreach (Transform spawnLocation in spawnLocations)
+        {
             float distance = Vector3.Distance(spawnLocation.position, player.transform.position);
-            Location currentLocation = new Location{
+            Location currentLocation = new Location
+            {
                 location = spawnLocation,
                 distance = distance
             };
@@ -103,7 +105,8 @@ public class EnemySpawner : MonoBehaviour
         }
         possibleSpots.Sort((x, y) => x.distance.CompareTo(y.distance));
 
-        for (int i = 0; i < activatedSpawns; i++) {
+        for (int i = 0; i < activatedSpawns; i++)
+        {
             chosenSpawns.Add(possibleSpots[i].location);
         }
 
@@ -140,7 +143,8 @@ public class Enemy
 }
 
 [System.Serializable]
-public class Location{
+public class Location
+{
     public Transform location;
     public float distance;
 }
