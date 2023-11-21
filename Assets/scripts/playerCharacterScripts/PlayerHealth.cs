@@ -126,6 +126,6 @@ public class PlayerHealth : MonoBehaviour
 
     private void RetrunToMenu()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
     }
 }
