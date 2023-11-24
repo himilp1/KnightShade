@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.AI;
+using Unity.AI.Navigation;
 public class EnemySpawner : MonoBehaviour
 {
     public List<Enemy> enemies = new List<Enemy>();
@@ -12,7 +13,6 @@ public class EnemySpawner : MonoBehaviour
     public List<Transform> chosenSpawns = new List<Transform>();
     private CurrentWaveText currentWaveText;
     public GameObject HUD;
-    public NavMeshSurface surface;
     public int waveDuration;
     private float waveTimer;
     private float spawnInterval;
@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour
     private int currentLocationIndex; //keeps track of current spawn location
     private int currentGroupSize;
     private int waveGroupSize;
-
+    public NavMeshSurface surface;
     private GameObject player;
     private StatTracker statTracker;
 
@@ -36,6 +36,7 @@ public class EnemySpawner : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         activatedSpawns = 3; ;
         statTracker = player.GetComponent<StatTracker>();
+        surface = GameObject.Find("NavMesh").GetComponent<NavMeshSurface>();
     }
 
     void Update()
@@ -50,8 +51,9 @@ public class EnemySpawner : MonoBehaviour
                 Instantiate(enemiesToSpawn[0], chosenSpawns[currentLocationIndex].position, Quaternion.identity);
                 enemiesToSpawn.RemoveAt(0);
                 currentGroupSize += 1;
-                //surface.BuildNavMesh();
-
+                if(enemiesToSpawn.Count == 0){
+                    surface.BuildNavMesh();
+                }
                 if (currentGroupSize % waveGroupSize == 0) // Check if we've spawned a pair of enemies.
                 {
                     currentLocationIndex = (currentLocationIndex + 1) % chosenSpawns.Count; // Rotate through spawn locations.

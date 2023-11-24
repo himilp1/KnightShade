@@ -112,7 +112,6 @@ public class EnemyAI : MonoBehaviour
         transform.LookAt(new Vector3(player.position.x, 0, player.position.z));
         agent.destination = transform.position;
         animator.SetFloat("Speed", speed);
-
     }
 
 }
