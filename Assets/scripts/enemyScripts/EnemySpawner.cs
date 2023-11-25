@@ -52,7 +52,7 @@ public class EnemySpawner : MonoBehaviour
                 enemiesToSpawn.RemoveAt(0);
                 currentGroupSize += 1;
                 if(enemiesToSpawn.Count == 0){
-                    surface.BuildNavMesh();
+                    //surface.BuildNavMesh();
                 }
                 if (currentGroupSize % waveGroupSize == 0) // Check if we've spawned a pair of enemies.
                 {
