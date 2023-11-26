@@ -31,6 +31,10 @@ public class ThirdPersonPlayer : MonoBehaviour
 
     public Vector3 moveDir;
 
+    public AudioSource footstepSound;
+    private float footstepTimer = 0f;
+    public float footstepDelay = 0.5f;
+
 
     private void Start()
     {
@@ -118,6 +122,17 @@ public class ThirdPersonPlayer : MonoBehaviour
 
             // Apply gravity to the character's movement.
             controller.Move(velocity * Time.deltaTime);
+
+            // Check if enough time has passed to play another footstep sound
+            if (footstepTimer <= 0f)
+            {
+                footstepSound.Play();
+                footstepTimer = footstepDelay; // Reset the timer
+            }
+            else
+            {
+                footstepTimer -= Time.deltaTime; // Decrease the timer
+            }
         }
         else
         {
