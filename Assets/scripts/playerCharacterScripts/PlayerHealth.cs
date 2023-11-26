@@ -93,8 +93,6 @@ public class PlayerHealth : MonoBehaviour
                 lastRegenTime = Time.time; // Record the time at which regen happens
                 currentHealth = (int)Mathf.Min(currentHealth + regenRate, maxHealth);
                 healthBar.SetHealth(currentHealth);
-
-                Debug.Log("Regenerating Health");
             }
         }
     }

@@ -6,6 +6,7 @@ using Unity.AI.Navigation;
 public class EnemySpawner : MonoBehaviour
 {
     public List<Enemy> enemies = new List<Enemy>();
+    public List<Enemy> bosses = new List<Enemy>();
     public int currWave;
     public int waveValue;
     private List<GameObject> enemiesToSpawn = new List<GameObject>();
@@ -23,6 +24,7 @@ public class EnemySpawner : MonoBehaviour
     public NavMeshSurface surface;
     private GameObject player;
     private StatTracker statTracker;
+    public int bossInterval;
 
     private int activatedSpawns;
 
@@ -36,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         activatedSpawns = 3; ;
         statTracker = player.GetComponent<StatTracker>();
-        surface = GameObject.Find("NavMesh").GetComponent<NavMeshSurface>();
+        bossInterval = 3;
     }
 
     void Update()
@@ -51,9 +53,7 @@ public class EnemySpawner : MonoBehaviour
                 Instantiate(enemiesToSpawn[0], chosenSpawns[currentLocationIndex].position, Quaternion.identity);
                 enemiesToSpawn.RemoveAt(0);
                 currentGroupSize += 1;
-                if(enemiesToSpawn.Count == 0){
-                    //surface.BuildNavMesh();
-                }
+
                 if (currentGroupSize % waveGroupSize == 0) // Check if we've spawned a pair of enemies.
                 {
                     currentLocationIndex = (currentLocationIndex + 1) % chosenSpawns.Count; // Rotate through spawn locations.
@@ -116,6 +116,12 @@ public class EnemySpawner : MonoBehaviour
     public void GenerateEnemies()
     {
         List<GameObject> generatedEnemies = new List<GameObject>();
+        if(currWave % bossInterval == 0){
+            Debug.Log("inside of boss check");
+            int randBossId = Random.Range(0, bosses.Count);
+            generatedEnemies.Add(bosses[randBossId].enemyPrefab);
+            waveValue -= bosses[randBossId].cost;
+        }
 
         while (waveValue > 0)
         {

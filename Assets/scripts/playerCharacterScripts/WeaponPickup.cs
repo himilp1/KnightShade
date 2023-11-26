@@ -41,6 +41,7 @@ public class WeaponPickup : MonoBehaviour
         PlayerInventory playerInv = FindObjectOfType<PlayerInventory>();
         if (playerInv)
         {
+            Debug.Log("weaponToEquip: " + weaponToEquip.name);
             playerInv.AssignWeapon(weaponToEquip, slot);
             pickupPrompt.gameObject.SetActive(false);
             Destroy(gameObject);
