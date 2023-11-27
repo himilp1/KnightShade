@@ -9,6 +9,9 @@ public class EnemyMeleeAttack : MonoBehaviour
         int enemyAtk = GetComponent<EnemyAI>().damage;
 
         PlayerHealth playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
-        playerHealth.TakeDamage(enemyAtk);
+        Animator animator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+        if(!animator.GetBool("isDead")){
+            playerHealth.TakeDamage(enemyAtk);
+        }
     }
 }

@@ -9,6 +9,9 @@ public class EnemyHealth : MonoBehaviour
     private GameObject player;
     [SerializeField] floatingHealthBar healthBar;
 
+    public AudioSource hitSound;
+    public AudioSource deathSound;
+
     private StatTracker statTracker;
 
     private void Start()
@@ -28,6 +31,7 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        hitSound.Play();
         statTracker.AddDamageDone(damage);
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
         if (currentHealth <= 0)
@@ -44,10 +48,12 @@ public class EnemyHealth : MonoBehaviour
 
         // Set the Die trigger to play the death animation
         animator.SetTrigger("Die");
+        deathSound.Play();
 
         GetComponent<EnemyAI>().isDead = true;
         GetComponent<EnemyAI>().enabled = false;
         GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+        GetComponent<BoxCollider>().enabled = false;
         // Optionally, destroy the enemy object after a delay
         Invoke("DestroyEnemy", 3.0f);
     }

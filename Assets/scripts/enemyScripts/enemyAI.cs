@@ -15,7 +15,7 @@ public class EnemyAI : MonoBehaviour
     public int damage;//enemy Atk value
     public float atkCooldown;
     public bool isDead;
-    public int enemyCost;
+    public int enemyCost;  
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -112,7 +112,6 @@ public class EnemyAI : MonoBehaviour
         transform.LookAt(new Vector3(player.position.x, player.position.y, player.position.z));
         agent.destination = transform.position;
         animator.SetFloat("Speed", speed);
-
     }
 
 }

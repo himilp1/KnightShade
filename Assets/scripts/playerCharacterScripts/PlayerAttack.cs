@@ -19,6 +19,8 @@ public class PlayerAttack : MonoBehaviour
     float lastClickedTime = 0;
     float maxComboDelay = 0.75f;
 
+    public AudioSource swingSound;
+
     private void Start()
     {
         playerInventory = GetComponent<PlayerInventory>();
@@ -35,23 +37,29 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && animator.GetCurrentAnimatorStateInfo(0).IsName("combo 1")){
+        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && animator.GetCurrentAnimatorStateInfo(0).IsName("combo 1"))
+        {
             animator.SetBool("hit1", false);
         }
-        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && animator.GetCurrentAnimatorStateInfo(0).IsName("combo 2")){
+        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && animator.GetCurrentAnimatorStateInfo(0).IsName("combo 2"))
+        {
             animator.SetBool("hit2", false);
         }
-        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && animator.GetCurrentAnimatorStateInfo(0).IsName("combo 3")){
+        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && animator.GetCurrentAnimatorStateInfo(0).IsName("combo 3"))
+        {
             animator.SetBool("hit3", false);
             noOfClicks = 0;
         }
 
-        if(Time.time - lastClickedTime > maxComboDelay){
+        if (Time.time - lastClickedTime > maxComboDelay)
+        {
             noOfClicks = 0;
             animator.SetBool("combo", false);
         }
-        if(Time.time > nextFireTime){
-            if(Input.GetMouseButtonDown(0)){
+        if (Time.time > nextFireTime)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
                 animator.SetBool("combo", true);
                 OnClick();
             }
@@ -59,23 +67,26 @@ public class PlayerAttack : MonoBehaviour
 
     }
 
-    private void OnClick(){
+    private void OnClick()
+    {
         lastClickedTime = Time.time;
         noOfClicks++;
-        if(noOfClicks == 1){
+        if (noOfClicks == 1)
+        {
             animator.SetBool("hit1", true);
         }
         noOfClicks = Mathf.Clamp(noOfClicks, 0, 3);
 
-        if(noOfClicks >= 2 && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && animator.GetCurrentAnimatorStateInfo(0).IsName("combo 1")){
+        if (noOfClicks >= 2 && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && animator.GetCurrentAnimatorStateInfo(0).IsName("combo 1"))
+        {
             animator.SetBool("hit1", false);
             animator.SetBool("hit2", true);
         }
-        if(noOfClicks >= 3 && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && animator.GetCurrentAnimatorStateInfo(0).IsName("combo 2")){
+        if (noOfClicks >= 3 && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.7f && animator.GetCurrentAnimatorStateInfo(0).IsName("combo 2"))
+        {
             animator.SetBool("hit2", false);
             animator.SetBool("hit3", true);
         }
-
     }
 
     public void KnockbackEnemy(Transform enemy)
@@ -100,5 +111,11 @@ public class PlayerAttack : MonoBehaviour
 
         // Ensure the enemy reaches the exact target position.
         enemy.position = targetPosition;
+    }
+
+    public void MakeSwingSound()
+    {
+        Debug.Log("Swing Sound");
+        swingSound.Play();
     }
 }

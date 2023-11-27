@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class floatingHealthBar : MonoBehaviour{
     [SerializeField] private Slider slider;
-    [SerializeField] private Camera camera;
+    [SerializeField] private new Camera camera;
     public Transform target;
     [SerializeField] private Vector3 offset;
     public Transform player;

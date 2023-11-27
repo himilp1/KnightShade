@@ -2,9 +2,12 @@ using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.AI;
+using Unity.AI.Navigation;
 public class EnemySpawner : MonoBehaviour
 {
     public List<Enemy> enemies = new List<Enemy>();
+    public List<Enemy> bosses = new List<Enemy>();
+    public List<Enemy> bossEnemies = new List<Enemy>();
     public int currWave;
     public int waveValue;
     private List<GameObject> enemiesToSpawn = new List<GameObject>();
@@ -12,17 +15,19 @@ public class EnemySpawner : MonoBehaviour
     public List<Transform> chosenSpawns = new List<Transform>();
     private CurrentWaveText currentWaveText;
     public GameObject HUD;
-    public NavMeshSurface surface;
     public int waveDuration;
     private float waveTimer;
     private float spawnInterval;
     private float spawnTimer;
-    private int currentLocationIndex; //keeps track of current spawn location
+    private int currentLocationIndex; // keeps track of current spawn location
     private int currentGroupSize;
     private int waveGroupSize;
-
+    public NavMeshSurface surface;
     private GameObject player;
     private StatTracker statTracker;
+    public int bossInterval;
+
+    public AudioSource newWaveSound;
 
     private int activatedSpawns;
 
@@ -36,6 +41,7 @@ public class EnemySpawner : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         activatedSpawns = 3; ;
         statTracker = player.GetComponent<StatTracker>();
+        bossInterval = 3;
     }
 
     void Update()
@@ -50,7 +56,6 @@ public class EnemySpawner : MonoBehaviour
                 Instantiate(enemiesToSpawn[0], chosenSpawns[currentLocationIndex].position, Quaternion.identity);
                 enemiesToSpawn.RemoveAt(0);
                 currentGroupSize += 1;
-                //surface.BuildNavMesh();
 
                 if (currentGroupSize % waveGroupSize == 0) // Check if we've spawned a pair of enemies.
                 {
@@ -68,7 +73,8 @@ public class EnemySpawner : MonoBehaviour
         }
         else
         {
-            if (enemyCount.Length <= 0)
+            if  (enemyCount.Length <= 0)
+             
             {
                 currWave += 1;
                 waveGroupSize += 1;
@@ -81,7 +87,13 @@ public class EnemySpawner : MonoBehaviour
 
     public void GenerateWave()
     {
+        newWaveSound.Play();
+
         waveValue = currWave * 10;
+        if (currWave % 3 == 0)
+        {
+            waveValue += 10;
+        }
         GenerateEnemies();
 
         // Start the wave timer.
@@ -114,6 +126,13 @@ public class EnemySpawner : MonoBehaviour
     public void GenerateEnemies()
     {
         List<GameObject> generatedEnemies = new List<GameObject>();
+        if (currWave % bossInterval == 0)
+        {
+            Debug.Log("inside of boss check");
+            int randBossId = Random.Range(0, bosses.Count);
+            generatedEnemies.Add(bosses[randBossId].enemyPrefab);
+            waveValue -= bosses[randBossId].cost;
+        }
 
         while (waveValue > 0)
         {
@@ -129,6 +148,15 @@ public class EnemySpawner : MonoBehaviour
             {
                 break;
             }
+        }
+
+        if (currWave % 3 == 0)
+        {
+            int randEnemyCost = enemies[3].cost;
+            generatedEnemies.Add(enemies[3].enemyPrefab);
+            waveValue -= randEnemyCost;
+            // bossText = HUD.GetComponent<BossText>();
+
         }
         enemiesToSpawn.Clear();
         enemiesToSpawn = generatedEnemies;

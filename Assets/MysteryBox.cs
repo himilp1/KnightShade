@@ -14,6 +14,9 @@ public class MysteryBox : MonoBehaviour
 
     public List<GameObject> weapons = new List<GameObject>();
     public Transform spawnLocation;
+
+    public AudioSource boxOpenSound;
+
     private void Start()
     {
         boxLid = transform.Find("Chest_Open_Cap").gameObject;
@@ -27,6 +30,8 @@ public class MysteryBox : MonoBehaviour
         boxLid.transform.eulerAngles = new Vector3(newXRotation, transform.eulerAngles.y, transform.eulerAngles.z);
 
         Debug.Log("Opened Chest");
+
+        boxOpenSound.Play();
 
         // Generate a random outcome
         GameObject weaponToSpawn = weapons[Random.Range(0, weapons.Count)];

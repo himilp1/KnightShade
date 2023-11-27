@@ -22,6 +22,8 @@ public class PlayerHealth : MonoBehaviour
     private float lastRegenTime;
     private DeathText deathText;
 
+    public AudioSource hitSound;
+
     private bool inSummaryScreen = false;
 
     void Start()
@@ -60,6 +62,8 @@ public class PlayerHealth : MonoBehaviour
         statTracker.AddDamageTaken(damage);
         healthBar.SetHealth(currentHealth);
 
+        hitSound.Play();
+
         lastDamageTime = Time.time; // Record the time of the last damage
 
         if (currentHealth <= 0)
@@ -93,8 +97,6 @@ public class PlayerHealth : MonoBehaviour
                 lastRegenTime = Time.time; // Record the time at which regen happens
                 currentHealth = (int)Mathf.Min(currentHealth + regenRate, maxHealth);
                 healthBar.SetHealth(currentHealth);
-
-                Debug.Log("Regenerating Health");
             }
         }
     }

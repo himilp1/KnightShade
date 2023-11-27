@@ -5,9 +5,22 @@ using UnityEngine;
 public class Anvil : MonoBehaviour
 {
     public ThirdPersonPlayer thirdPersonPlayer;
+    public PlayerInventory playerInventory;
+    public BoxCollider weaponCollider;
+    public GameObject currWeapon;
+
+    public void Start(){
+        playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
+        currWeapon = playerInventory.currentMeleeWeapon;
+        weaponCollider = currWeapon.GetComponent<BoxCollider>();
+    }
 
     public void Use()
-    {
+    {  
+
+        currWeapon.GetComponent<WeaponStats>().atkDmg = (int)(currWeapon.GetComponent<WeaponStats>().atkDmg * 1.5);//changes the weapons damage to be 1.5 times as much 
+        weaponCollider.size = new Vector3((float)(weaponCollider.size.x * 1.5), (float)(weaponCollider.size.y * 1.5), (float)(weaponCollider.size.z * 1.5));
+        currWeapon.GetComponent<WeaponStats>().upgradeNums += 1;
         // Get current weapon the player is holding
         // Check if it is already upgraded
         //      Let's say every weapon starts at tier 0
