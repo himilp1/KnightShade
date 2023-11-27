@@ -53,6 +53,7 @@ public class EnemyHealth : MonoBehaviour
         GetComponent<EnemyAI>().isDead = true;
         GetComponent<EnemyAI>().enabled = false;
         GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+        GetComponent<BoxCollider>().enabled = false;
         // Optionally, destroy the enemy object after a delay
         Invoke("DestroyEnemy", 3.0f);
     }

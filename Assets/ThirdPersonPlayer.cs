@@ -237,7 +237,18 @@ public class ThirdPersonPlayer : MonoBehaviour
 
             else if (hit.collider.CompareTag("Anvil"))
             {
-                int anvilCost = 2;
+                GameObject weapon = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().currentMeleeWeapon;
+                int numOfUpgrades = weapon.GetComponent<WeaponStats>().upgradeNums;
+                int anvilCost = 50; //default cost no upgrades
+
+                if(numOfUpgrades == 1){
+                    anvilCost = 100;
+                    //already has one upgrade
+                }
+                else if(numOfUpgrades == 2){
+                    anvilCost = 200;
+                    //already has 2 upgrades
+                }
 
                 // Show the text element with a custom message
                 interactionText.SetText("Press 'E' to upgrade current weapon. \n (" + anvilCost + " Points)");
