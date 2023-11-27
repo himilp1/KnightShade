@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4503531, g: 0.5003724, b: 0.57528085, a: 1}
+  m_IndirectSpecularColor: {r: 0.45035326, g: 0.50037295, b: 0.5752812, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -15521,6 +15521,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6394490339666285006, guid: fb98b7c8a85326e4893c9aa600bdb883, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: f4cff3a89ab0ec54093011a3afe0d1dd, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19586,6 +19590,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4782645366351399998, guid: 76cadaedbd7032e48855a9260c7bfdf2, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 2c32bbde75afda4499225e296cd4ab1a, type: 2}
     - target: {fileID: 8732301530764892322, guid: 76cadaedbd7032e48855a9260c7bfdf2, type: 3}
       propertyPath: m_Name
       value: spear enemy
@@ -26352,6 +26360,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SingleSword
       objectReference: {fileID: 0}
+    - target: {fileID: 8962665479422812683, guid: 114b4aef676521649863627fd0bef2f4, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: f4cff3a89ab0ec54093011a3afe0d1dd, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28497,7 +28509,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 636139856}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22776727, y: 0.000000018731674, z: -0.0000000043816306, w: 0.9737156}
+  m_LocalRotation: {x: 0.22776727, y: -0.000000018731678, z: 0.000000004381631, w: 0.9737156}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -35621,6 +35633,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2128005906}
     m_Modifications:
+    - target: {fileID: 776226941527013699, guid: 4197ce3fd3246594b98b40d76d1d8893, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: bc90e5f150e78f44a89f7436c177acfe, type: 2}
     - target: {fileID: 2923898947198059500, guid: 4197ce3fd3246594b98b40d76d1d8893, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19.581486
@@ -35663,7 +35679,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6494571782266570164, guid: 4197ce3fd3246594b98b40d76d1d8893, type: 3}
       propertyPath: m_Name
-      value: Handonly enemy
+      value: Left-Right goodnight
       objectReference: {fileID: 0}
     - target: {fileID: 6494571782266570164, guid: 4197ce3fd3246594b98b40d76d1d8893, type: 3}
       propertyPath: m_TagString
@@ -42478,7 +42494,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 993704566}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22882988, y: 0.000000034336193, z: -0.000000008071307, w: 0.97346646}
+  m_LocalRotation: {x: 0.22882988, y: -0.00000003607689, z: 0.000000008480488, w: 0.97346646}
   m_LocalPosition: {x: -9.762, y: 5.2029004, z: 48.3414}
   m_LocalScale: {x: -1.8726, y: -1.8726, z: -1.8726}
   m_ConstrainProportionsScale: 0
@@ -55795,6 +55811,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2128005906}
     m_Modifications:
+    - target: {fileID: 1215835790551742996, guid: 5ff2d39ebb8e4054dbb6d9e75d409b9d, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 9fd2e1fc7a87fd24a8f7764d240700d4, type: 2}
     - target: {fileID: 3386440727930549469, guid: 5ff2d39ebb8e4054dbb6d9e75d409b9d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.716777
@@ -80357,6 +80377,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6122018238974313884, guid: 0c867da957f2a9947b6affc02245da84, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 514e9023a5314094099e537a4d4117c9, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
