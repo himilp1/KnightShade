@@ -5,6 +5,7 @@ public class WeaponPickup : MonoBehaviour
 {
     public GameObject weaponToEquip;
     public TextMeshProUGUI pickupPrompt;
+    public CanvasGroup interactTextBackground;
 
     public GameObject player;
     private PlayerPointsTracker playerPointsTracker;
@@ -16,16 +17,18 @@ public class WeaponPickup : MonoBehaviour
     {
         playerPointsTracker = player.GetComponent<PlayerPointsTracker>();
         pickupPrompt.gameObject.SetActive(false);
+        interactTextBackground.alpha = 0;
     }
 
     private void Update()
     {
         if (isPlayerInRange)
         {
-            if (Input.GetKeyDown(KeyCode.M) && playerPointsTracker.currentPoints >= weaponCost)
+            if (Input.GetKeyDown(KeyCode.Q) && playerPointsTracker.currentPoints >= weaponCost)
             {
                 AssignWeaponToSlot("Primary");
                 playerPointsTracker.SpendPoints(weaponCost);
+                interactTextBackground.alpha = 0;
             }
             /*
             else if (Input.GetKeyDown(KeyCode.N))
@@ -52,8 +55,9 @@ public class WeaponPickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            interactTextBackground.alpha = 1;
             pickupPrompt.gameObject.SetActive(true);
-            pickupPrompt.text = "Press M to Pickup";
+            pickupPrompt.text = "Press Q to Pickup";
             isPlayerInRange = true;
         }
     }
@@ -62,6 +66,7 @@ public class WeaponPickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            interactTextBackground.alpha = 0;
             pickupPrompt.gameObject.SetActive(false);
             isPlayerInRange = false;
         }

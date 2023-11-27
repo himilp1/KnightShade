@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4503535, g: 0.5003732, b: 0.5752818, a: 1}
+  m_IndirectSpecularColor: {r: 0.4503531, g: 0.5003724, b: 0.57528085, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -2502,6 +2502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponToEquip: {fileID: 693217522}
   pickupPrompt: {fileID: 1806955584}
+  interactTextBackground: {fileID: 1993159747}
   player: {fileID: 424347270}
   weaponCost: 0
 --- !u!1001 &52717100
@@ -4581,6 +4582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponToEquip: {fileID: 1328810081}
   pickupPrompt: {fileID: 1806955584}
+  interactTextBackground: {fileID: 1993159747}
   player: {fileID: 424347270}
   weaponCost: 0
 --- !u!65 &99259706
@@ -6599,7 +6601,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 141668753}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.21006517, y: -0.000000008411232, z: 0.0000000018072307, w: 0.9776874}
+  m_LocalRotation: {x: 0.21006517, y: 0.000000008411232, z: -0.0000000018072307, w: 0.9776874}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -22321,6 +22323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponToEquip: {fileID: 1565739607}
   pickupPrompt: {fileID: 1806955584}
+  interactTextBackground: {fileID: 1993159747}
   player: {fileID: 424347270}
   weaponCost: 0
 --- !u!65 &485166781
@@ -28368,7 +28371,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 636139856}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22776727, y: 0.000000018731674, z: -0.0000000043816306, w: 0.9737156}
+  m_LocalRotation: {x: 0.22776727, y: -0.000000018731678, z: 0.000000004381631, w: 0.9737156}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -30942,6 +30945,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponToEquip: {fileID: 1565739608}
   pickupPrompt: {fileID: 1806955584}
+  interactTextBackground: {fileID: 1993159747}
   player: {fileID: 424347270}
   weaponCost: 0
 --- !u!65 &718880856
@@ -33326,6 +33330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponToEquip: {fileID: 1328810079}
   pickupPrompt: {fileID: 1806955584}
+  interactTextBackground: {fileID: 1993159747}
   player: {fileID: 424347270}
   weaponCost: 0
 --- !u!65 &763478597
@@ -35410,6 +35415,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1993159750}
   - {fileID: 1806955583}
   - {fileID: 1016995006}
   m_Father: {fileID: 0}
@@ -35829,6 +35835,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponToEquip: {fileID: 1328810082}
   pickupPrompt: {fileID: 1806955584}
+  interactTextBackground: {fileID: 1993159747}
   player: {fileID: 424347270}
   weaponCost: 0
 --- !u!65 &834689699
@@ -41296,10 +41303,6 @@ MonoBehaviour:
   openTime: 2
   weapons:
   - {fileID: 2090052090}
-  - {fileID: 763478594}
-  - {fileID: 1976676620}
-  - {fileID: 834689696}
-  - {fileID: 99259703}
   spawnLocation: {fileID: 1976349158}
   boxOpenSound: {fileID: 974621679}
 --- !u!4 &974621682
@@ -42346,7 +42349,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 993704566}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22882988, y: 0.000000034336193, z: -0.000000008071307, w: 0.97346646}
+  m_LocalRotation: {x: 0.22882988, y: -0.00000003607689, z: 0.000000008480488, w: 0.97346646}
   m_LocalPosition: {x: -9.762, y: 5.2029004, z: 48.3414}
   m_LocalScale: {x: -1.8726, y: -1.8726, z: -1.8726}
   m_ConstrainProportionsScale: 0
@@ -54970,7 +54973,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   atkDmg: 40
-  atkSpd: 0.8
+  atkSpd: 2
   weaponType: 1
   upgradeNums: 0
 --- !u!114 &1328810087
@@ -75779,8 +75782,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 0, y: -448}
+  m_SizeDelta: {x: 352.17, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1806955584
 MonoBehaviour:
@@ -75802,17 +75805,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PRESS M TO PICKUP
+  m_text: Press Q to pick up
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 19568eb474f484ea3ae78bfd724dfedd, type: 2}
+  m_sharedMaterial: {fileID: 7097207748646558486, guid: 19568eb474f484ea3ae78bfd724dfedd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -80113,6 +80116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponToEquip: {fileID: 965606667}
   pickupPrompt: {fileID: 1806955584}
+  interactTextBackground: {fileID: 1993159747}
   player: {fileID: 424347270}
   weaponCost: 0
 --- !u!114 &1937447047
@@ -82119,6 +82123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponToEquip: {fileID: 1328810080}
   pickupPrompt: {fileID: 1806955584}
+  interactTextBackground: {fileID: 1993159747}
   player: {fileID: 424347270}
   weaponCost: 0
 --- !u!65 &1976676623
@@ -82744,6 +82749,94 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 475842, guid: 576b6d70e3da01b489b5b99e260ddc93, type: 3}
   m_PrefabInstance: {fileID: 1992577385}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1993159746
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1993159750}
+  - component: {fileID: 1993159749}
+  - component: {fileID: 1993159748}
+  - component: {fileID: 1993159747}
+  m_Layer: 5
+  m_Name: Weapon Text Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!225 &1993159747
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993159746}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &1993159748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993159746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.9811321, g: 0.8999978, b: 0.8284087, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1993159749
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993159746}
+  m_CullTransparentMesh: 1
+--- !u!224 &1993159750
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993159746}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 826711407}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -449}
+  m_SizeDelta: {x: 500, y: 120}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &1994150224 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 480734, guid: b1ad8ef6890687249a641abef8e26baf, type: 3}
@@ -86787,6 +86880,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponToEquip: {fileID: 1328810078}
   pickupPrompt: {fileID: 1806955584}
+  interactTextBackground: {fileID: 1993159747}
   player: {fileID: 424347270}
   weaponCost: 0
 --- !u!65 &2090052093
