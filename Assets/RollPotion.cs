@@ -10,6 +10,8 @@ public class RollPotion : MonoBehaviour
 
     private CanvasGroup canvasGroup;
 
+    public AudioSource potionSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,7 @@ public class RollPotion : MonoBehaviour
 
     public void Consume()
     {
+        potionSound.Play();
         thirdPersonRoll.enabled = true;
         canvasGroup.alpha = 1;
         Debug.Log("Consumed Roll Potion");

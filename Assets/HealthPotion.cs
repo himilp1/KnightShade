@@ -8,12 +8,15 @@ public class HealthPotion : MonoBehaviour
     public ThirdPersonPlayer thirdPersonPlayer;
     public PlayerHealth playerHealth;
 
+    public AudioSource potionSound;
+
     void Start()
     {
         playerHealth = thirdPersonPlayer.GetComponent<PlayerHealth>();
     }
     public void Consume()
     {
+        potionSound.Play();
         playerHealth.maxHealth = 400;
         healthBar.SetMaxHealth(playerHealth.maxHealth);
         Debug.Log("Consumed Potion");
