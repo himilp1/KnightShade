@@ -179,14 +179,34 @@ public class ThirdPersonPlayer : MonoBehaviour
                 }
             }
 
-            // Check if the hit object is a mystery box
-            else if (hit.collider.CompareTag("MysteryBox"))
+            // Check if the hit object is a rare mystery box
+            else if (hit.collider.CompareTag("RareMysteryBox"))
             {
                 int mysteryBoxCost = 50;
                 mysteryBoxCost = 0;
 
                 // Show the text element with a custom message
                 interactionText.SetText("Press 'E' to get a random rare weapon. \n (" + mysteryBoxCost + " Points)");
+                interactionText.ShowText();
+                interactTextBackground.alpha = 1;
+
+                if (Input.GetKeyDown(KeyCode.E) && pointsTracker.currentPoints >= mysteryBoxCost)
+                {
+                    MysteryBox mysteryBox = hit.collider.GetComponent<MysteryBox>();
+                    mysteryBox.Open();
+                    pointsTracker.SpendPoints(mysteryBoxCost);
+                    statTracker.AddPointsSpent(mysteryBoxCost);
+                }
+            }
+
+            // Check if the hit object is an uncommon mystery box
+            else if (hit.collider.CompareTag("UncommonMysteryBox"))
+            {
+                int mysteryBoxCost = 30;
+                mysteryBoxCost = 0;
+
+                // Show the text element with a custom message
+                interactionText.SetText("Press 'E' to get a random uncommon weapon. \n (" + mysteryBoxCost + " Points)");
                 interactionText.ShowText();
                 interactTextBackground.alpha = 1;
 
