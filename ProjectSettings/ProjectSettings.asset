@@ -826,7 +826,13 @@ PlayerSettings:
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
   cloudServicesEnabled:
+    Build: 0
+    Game Performance: 0
+    Legacy Analytics: 0
+    Purchasing: 0
+    UDP: 0
     UNet: 1
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -846,11 +852,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 8df4f6d8-e3ff-45b8-89be-fe5c680b7577
+  cloudProjectId: 4786d715-07f5-4c36-bc4a-1c036c1b2ba4
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: The One
-  organizationId: mihirar
+  projectName: The One (1)
+  organizationId: himilp1
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

@@ -41,7 +41,6 @@ public class EnemySpawner : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         activatedSpawns = 3; ;
         statTracker = player.GetComponent<StatTracker>();
-        bossInterval = 3;
     }
 
     void Update()
