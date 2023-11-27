@@ -84592,6 +84592,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 997125128}
     m_Modifications:
+    - target: {fileID: 1948945653622921948, guid: f237d5315bc194b4d8d41bb42d95328c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: a32110433e2735648a7e01f6b2eb7193, type: 2}
     - target: {fileID: 2547504255533679496, guid: f237d5315bc194b4d8d41bb42d95328c, type: 3}
       propertyPath: speed
       value: 0
@@ -84749,6 +84753,10 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 250
       objectReference: {fileID: 0}
+    - target: {fileID: 5373855774615096158, guid: cf8c225813344ef4786c5e211a75ff09, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 3a2bc47e21a5e8942b4baf283931bfc0, type: 2}
     - target: {fileID: 5555608124779029959, guid: cf8c225813344ef4786c5e211a75ff09, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -84871,6 +84879,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4113013365800940794, guid: 96ae5484032f5894db71ab30e58cfb51, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 127aea47b0926354d8de085d0ced8fd1, type: 2}
     - target: {fileID: 6181018298513166959, guid: 96ae5484032f5894db71ab30e58cfb51, type: 3}
       propertyPath: m_Name
       value: SpearBoss

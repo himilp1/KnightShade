@@ -12481,7 +12481,7 @@ RectTransform:
   m_Father: {fileID: 5041735205082947076}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: -0.00053453445}
   m_SizeDelta: {x: 10, y: -0.0010693073}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -16073,7 +16073,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1936400744042357602}
@@ -16113,7 +16113,7 @@ Animator:
   m_GameObject: {fileID: 6181018298513166959}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: d9b155d656a64f02adc39213c8d11c86, type: 3}
-  m_Controller: {fileID: 9100000, guid: 31f200a8502146c1903e2e9f490c79b4, type: 2}
+  m_Controller: {fileID: 22100000, guid: 127aea47b0926354d8de085d0ced8fd1, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -16143,8 +16143,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Size: {x: 1, y: 1.5008178, z: 1}
+  m_Center: {x: 0, y: 0.7504089, z: 0}
 --- !u!54 &3259448316568460224
 Rigidbody:
   m_ObjectHideFlags: 0

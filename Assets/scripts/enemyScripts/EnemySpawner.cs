@@ -17,7 +17,7 @@ public class EnemySpawner : MonoBehaviour
     private float waveTimer;
     private float spawnInterval;
     private float spawnTimer;
-    private int currentLocationIndex; //keeps track of current spawn location
+    private int currentLocationIndex; // keeps track of current spawn location
     private int currentGroupSize;
     private int waveGroupSize;
     void Start()

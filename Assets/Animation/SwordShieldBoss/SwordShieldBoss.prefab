@@ -2643,7 +2643,7 @@ Animator:
   m_GameObject: {fileID: 5067302243981213565}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: d9b155d656a64f02adc39213c8d11c86, type: 3}
-  m_Controller: {fileID: 9100000, guid: 460f8a3bb5d64cdb84825bb816d5cc0e, type: 2}
+  m_Controller: {fileID: 22100000, guid: 3a2bc47e21a5e8942b4baf283931bfc0, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -2673,8 +2673,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Size: {x: 1, y: 1.5281613, z: 1}
+  m_Center: {x: 0, y: 0.76408064, z: 0}
 --- !u!114 &8610042894397477738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2687,10 +2687,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 960ccfdc20b294346ac216b2bb31fb30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
+  agent: {fileID: 4027708299267426981}
   player: {fileID: 0}
-  walkRange: 0
-  attackRange: 0
+  walkRange: 10
+  attackRange: 6
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 0
@@ -6388,7 +6388,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5373855773233421590
 Transform:
   m_ObjectHideFlags: 0
@@ -14984,7 +14984,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5373855774447837122
 Transform:
   m_ObjectHideFlags: 0
