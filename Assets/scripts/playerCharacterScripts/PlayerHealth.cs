@@ -109,6 +109,7 @@ public class PlayerHealth : MonoBehaviour
         animator.SetBool("isDead", true);
         deathText.ShowText();
         Invoke("DisplaySummary", 2.0f);
+        GetComponent<PlayerHealth>().enabled = false;
     }
 
     private void DisplaySummary()

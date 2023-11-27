@@ -101,7 +101,7 @@ public class EnemyAI : MonoBehaviour
 
     public void ChasePlayer()
     {
-        transform.LookAt(new Vector3(player.position.x, 0, player.position.z));
+        transform.LookAt(new Vector3(player.position.x, player.position.y, player.position.z));
         agent.speed = speed;
         agent.destination = player.position;
         animator.SetFloat("Speed", speed);
@@ -109,7 +109,7 @@ public class EnemyAI : MonoBehaviour
 
     public void AttackPlayer()
     {
-        transform.LookAt(new Vector3(player.position.x, 0, player.position.z));
+        transform.LookAt(new Vector3(player.position.x, player.position.y, player.position.z));
         agent.destination = transform.position;
         animator.SetFloat("Speed", speed);
     }
