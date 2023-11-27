@@ -22,6 +22,8 @@ public class PlayerHealth : MonoBehaviour
     private float lastRegenTime;
     private DeathText deathText;
 
+    public AudioSource hitSound;
+
     private bool inSummaryScreen = false;
 
     void Start()
@@ -59,6 +61,8 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= damage;
         statTracker.AddDamageTaken(damage);
         healthBar.SetHealth(currentHealth);
+
+        hitSound.Play();
 
         lastDamageTime = Time.time; // Record the time of the last damage
 

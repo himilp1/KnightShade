@@ -26,6 +26,8 @@ public class EnemySpawner : MonoBehaviour
     private StatTracker statTracker;
     public int bossInterval;
 
+    public AudioSource newWaveSound;
+
     private int activatedSpawns;
 
     void Start()
@@ -83,6 +85,8 @@ public class EnemySpawner : MonoBehaviour
 
     public void GenerateWave()
     {
+        newWaveSound.Play();
+
         waveValue = currWave * 10;
         GenerateEnemies();
 
@@ -116,7 +120,8 @@ public class EnemySpawner : MonoBehaviour
     public void GenerateEnemies()
     {
         List<GameObject> generatedEnemies = new List<GameObject>();
-        if(currWave % bossInterval == 0){
+        if (currWave % bossInterval == 0)
+        {
             Debug.Log("inside of boss check");
             int randBossId = Random.Range(0, bosses.Count);
             generatedEnemies.Add(bosses[randBossId].enemyPrefab);
