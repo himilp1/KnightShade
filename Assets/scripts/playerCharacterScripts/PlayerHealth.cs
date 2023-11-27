@@ -23,8 +23,13 @@ public class PlayerHealth : MonoBehaviour
     private DeathText deathText;
 
     public AudioSource hitSound;
+    public GameObject bgMusicObject;
+    public GameObject lossJingleObject;
 
-    private bool inSummaryScreen = false;
+    private AudioSource music;
+    private AudioSource lossJingle;
+
+    public bool inSummaryScreen = false;
 
     void Start()
     {
@@ -39,6 +44,9 @@ public class PlayerHealth : MonoBehaviour
 
         player = GameObject.FindGameObjectWithTag("Player");
         statTracker = player.GetComponent<StatTracker>();
+
+        music = bgMusicObject.GetComponent<AudioSource>();
+        lossJingle = lossJingleObject.GetComponent<AudioSource>();
 
         canRegenerate = false;
     }
@@ -58,6 +66,8 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (inSummaryScreen) return;
+
         currentHealth -= damage;
         statTracker.AddDamageTaken(damage);
         healthBar.SetHealth(currentHealth);
@@ -108,8 +118,10 @@ public class PlayerHealth : MonoBehaviour
         GetComponent<ThirdPersonPlayer>().enabled = false;
         animator.SetBool("isDead", true);
         deathText.ShowText();
+        music.enabled = false;
+        lossJingle.Play();
         Invoke("DisplaySummary", 2.0f);
-        GetComponent<PlayerHealth>().enabled = false;
+        // GetComponent<PlayerHealth>().enabled = false;
     }
 
     private void DisplaySummary()
@@ -129,6 +141,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void RetrunToMenu()
     {
+        Debug.Log("returning to menu");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
     }
 }

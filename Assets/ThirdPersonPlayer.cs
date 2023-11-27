@@ -183,7 +183,6 @@ public class ThirdPersonPlayer : MonoBehaviour
             else if (hit.collider.CompareTag("RareMysteryBox"))
             {
                 int mysteryBoxCost = 50;
-                mysteryBoxCost = 0;
 
                 // Show the text element with a custom message
                 interactionText.SetText("Press 'E' to get a random rare weapon. \n (" + mysteryBoxCost + " Points)");
@@ -203,7 +202,6 @@ public class ThirdPersonPlayer : MonoBehaviour
             else if (hit.collider.CompareTag("UncommonMysteryBox"))
             {
                 int mysteryBoxCost = 30;
-                mysteryBoxCost = 0;
 
                 // Show the text element with a custom message
                 interactionText.SetText("Press 'E' to get a random uncommon weapon. \n (" + mysteryBoxCost + " Points)");
@@ -261,11 +259,13 @@ public class ThirdPersonPlayer : MonoBehaviour
                 int numOfUpgrades = weapon.GetComponent<WeaponStats>().upgradeNums;
                 int anvilCost = 50; //default cost no upgrades
 
-                if(numOfUpgrades == 1){
+                if (numOfUpgrades == 1)
+                {
                     anvilCost = 100;
                     //already has one upgrade
                 }
-                else if(numOfUpgrades == 2){
+                else if (numOfUpgrades == 2)
+                {
                     anvilCost = 200;
                     //already has 2 upgrades
                 }
