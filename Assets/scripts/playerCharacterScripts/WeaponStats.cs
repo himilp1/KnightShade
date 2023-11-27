@@ -7,6 +7,8 @@ public class WeaponStats : MonoBehaviour
     public int atkDmg;
     public float atkSpd;
     public int weaponType;
+    public int upgradeNums;//how many times has this weapon been improved at the anvil
+    
     //this is used to control the weapon animations
     // 0 = default weapon
     // 1 = single sword
