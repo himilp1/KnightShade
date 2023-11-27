@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4503535, g: 0.5003732, b: 0.5752818, a: 1}
+  m_IndirectSpecularColor: {r: 0.45035326, g: 0.50037295, b: 0.5752812, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -19650,7 +19650,7 @@ Animator:
   m_GameObject: {fileID: 424347270}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: d9b155d656a64f02adc39213c8d11c86, type: 3}
-  m_Controller: {fileID: 22100000, guid: 1ca95f3fe28b66c48ae082f8fbd084bc, type: 2}
+  m_Controller: {fileID: 22100000, guid: bf74e989d479a644885b91fd7ac3e30d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -19767,6 +19767,8 @@ MonoBehaviour:
   overrideControllers:
   - {fileID: 22100000, guid: bf74e989d479a644885b91fd7ac3e30d, type: 2}
   - {fileID: 22100000, guid: 1ca95f3fe28b66c48ae082f8fbd084bc, type: 2}
+  - {fileID: 22100000, guid: 6d75a543251029f46881907f7a52bfa8, type: 2}
+  - {fileID: 22100000, guid: 3b9b4c0fcc05eb74f8938ddf63a1ba29, type: 2}
   overrider: {fileID: 424347283}
 --- !u!114 &424347285
 MonoBehaviour:
@@ -28368,7 +28370,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 636139856}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22776727, y: 0.000000018731674, z: -0.0000000043816306, w: 0.9737156}
+  m_LocalRotation: {x: 0.22776727, y: -0.000000018731678, z: 0.000000004381631, w: 0.9737156}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -42346,7 +42348,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 993704566}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22882988, y: 0.000000034336193, z: -0.000000008071307, w: 0.97346646}
+  m_LocalRotation: {x: 0.22882988, y: -0.0000000343362, z: 0.000000008071309, w: 0.97346646}
   m_LocalPosition: {x: -9.762, y: 5.2029004, z: 48.3414}
   m_LocalScale: {x: -1.8726, y: -1.8726, z: -1.8726}
   m_ConstrainProportionsScale: 0
@@ -54971,7 +54973,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   atkDmg: 40
   atkSpd: 0.8
-  weaponType: 1
+  weaponType: 2
   upgradeNums: 0
 --- !u!114 &1328810087
 MonoBehaviour:
@@ -64129,7 +64131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   atkDmg: 33
   atkSpd: 0.9
-  weaponType: 1
+  weaponType: 2
   upgradeNums: 0
 --- !u!114 &1556767161
 MonoBehaviour:
@@ -65515,7 +65517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   atkDmg: 35
   atkSpd: 1.2
-  weaponType: 1
+  weaponType: 3
   upgradeNums: 0
 --- !u!114 &1565739610
 MonoBehaviour:
@@ -67374,7 +67376,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1597923276}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.24544097, y: -2.6101994e-15, z: 4.3599073e-16, w: 0.96941155}
+  m_LocalRotation: {x: 0.24544099, y: 0.000000014445357, z: -0.0000000036573555, w: 0.96941155}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
