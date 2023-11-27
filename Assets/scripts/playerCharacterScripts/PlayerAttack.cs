@@ -58,7 +58,7 @@ public class PlayerAttack : MonoBehaviour
         }
 
     }
-
+    
     private void OnClick(){
         lastClickedTime = Time.time;
         noOfClicks++;
