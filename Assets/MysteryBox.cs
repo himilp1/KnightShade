@@ -13,7 +13,7 @@ public class MysteryBox : MonoBehaviour
     public float openTime = 2.0f;
 
     public List<GameObject> weapons = new List<GameObject>();
-
+    public Transform spawnLocation;
     private void Start()
     {
         boxLid = transform.Find("Chest_Open_Cap").gameObject;
@@ -29,10 +29,9 @@ public class MysteryBox : MonoBehaviour
         Debug.Log("Opened Chest");
 
         // Generate a random outcome
-        string[] possibleOutcomes = { "Outcome1", "Outcome2", "Outcome3", "Outcome4" };
-        string selectedOutcome = possibleOutcomes[UnityEngine.Random.Range(0, possibleOutcomes.Length)];
-        Debug.Log("Selected Outcome: " + selectedOutcome);
-
+        GameObject weaponToSpawn = weapons[Random.Range(0, weapons.Count)];
+        Debug.Log("Selected Outcome: " + weaponToSpawn);
+        Instantiate(weaponToSpawn, spawnLocation.position, Quaternion.identity);
         Invoke("Close", openTime);
     }
 

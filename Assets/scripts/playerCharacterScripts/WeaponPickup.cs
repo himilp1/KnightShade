@@ -10,7 +10,7 @@ public class WeaponPickup : MonoBehaviour
     private PlayerPointsTracker playerPointsTracker;
 
     private bool isPlayerInRange = false;
-    public int weaponCost = 30;
+    public int weaponCost = 0;
 
     private void Start()
     {
@@ -41,6 +41,7 @@ public class WeaponPickup : MonoBehaviour
         PlayerInventory playerInv = FindObjectOfType<PlayerInventory>();
         if (playerInv)
         {
+            Debug.Log("weaponToEquip: " + weaponToEquip.name);
             playerInv.AssignWeapon(weaponToEquip, slot);
             pickupPrompt.gameObject.SetActive(false);
             Destroy(gameObject);
@@ -52,7 +53,7 @@ public class WeaponPickup : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             pickupPrompt.gameObject.SetActive(true);
-            pickupPrompt.text = "Press M to Pickup \n (" + weaponCost + " Points)";
+            pickupPrompt.text = "Press M to Pickup";
             isPlayerInRange = true;
         }
     }

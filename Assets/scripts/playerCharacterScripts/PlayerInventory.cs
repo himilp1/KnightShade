@@ -48,7 +48,7 @@ public class PlayerInventory : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             EquipWeapon(defaultPrimaryWeapon);
         }
@@ -78,6 +78,7 @@ public class PlayerInventory : MonoBehaviour
         }
         else
         {
+            Debug.Log("melee Weapon selected");
             if (currentMeleeWeapon && currentMeleeWeapon != newWeapon)
             {
                 currentMeleeWeapon.SetActive(false);
