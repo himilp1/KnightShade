@@ -183,6 +183,7 @@ public class ThirdPersonPlayer : MonoBehaviour
             else if (hit.collider.CompareTag("MysteryBox"))
             {
                 int mysteryBoxCost = 50;
+                mysteryBoxCost = 0;
 
                 // Show the text element with a custom message
                 interactionText.SetText("Press 'E' to get a random rare weapon. \n (" + mysteryBoxCost + " Points)");
