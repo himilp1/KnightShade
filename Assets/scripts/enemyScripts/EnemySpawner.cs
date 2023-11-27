@@ -7,6 +7,7 @@ public class EnemySpawner : MonoBehaviour
 {
     public List<Enemy> enemies = new List<Enemy>();
     public List<Enemy> bosses = new List<Enemy>();
+    public List<Enemy> bossEnemies = new List<Enemy>();
     public int currWave;
     public int waveValue;
     private List<GameObject> enemiesToSpawn = new List<GameObject>();
@@ -18,7 +19,7 @@ public class EnemySpawner : MonoBehaviour
     private float waveTimer;
     private float spawnInterval;
     private float spawnTimer;
-    private int currentLocationIndex; //keeps track of current spawn location
+    private int currentLocationIndex; // keeps track of current spawn location
     private int currentGroupSize;
     private int waveGroupSize;
     public NavMeshSurface surface;
@@ -72,7 +73,8 @@ public class EnemySpawner : MonoBehaviour
         }
         else
         {
-            if (enemyCount.Length <= 0)
+            if  (enemyCount.Length <= 0)
+             
             {
                 currWave += 1;
                 waveGroupSize += 1;
@@ -88,6 +90,10 @@ public class EnemySpawner : MonoBehaviour
         newWaveSound.Play();
 
         waveValue = currWave * 10;
+        if (currWave % 3 == 0)
+        {
+            waveValue += 10;
+        }
         GenerateEnemies();
 
         // Start the wave timer.
@@ -142,6 +148,15 @@ public class EnemySpawner : MonoBehaviour
             {
                 break;
             }
+        }
+
+        if (currWave % 3 == 0)
+        {
+            int randEnemyCost = enemies[3].cost;
+            generatedEnemies.Add(enemies[3].enemyPrefab);
+            waveValue -= randEnemyCost;
+            // bossText = HUD.GetComponent<BossText>();
+
         }
         enemiesToSpawn.Clear();
         enemiesToSpawn = generatedEnemies;
