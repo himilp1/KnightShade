@@ -101,6 +101,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void PickSpawnLocations()
     {
+        chosenSpawns.Clear();
         List<Location> possibleSpots = new List<Location>();
 
         //float distance = Vector3.Distance(agent.transform.position, player.position);
