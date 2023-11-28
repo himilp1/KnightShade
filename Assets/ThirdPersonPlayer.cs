@@ -266,7 +266,7 @@ public class ThirdPersonPlayer : MonoBehaviour
                 }
                 else if (numOfUpgrades == 2)
                 {
-                    anvilCost = 200;
+                    anvilCost = 250;
                     //already has 2 upgrades
                 }
 
