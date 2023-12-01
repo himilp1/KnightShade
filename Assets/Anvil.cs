@@ -17,10 +17,9 @@ public class Anvil : MonoBehaviour
 
     public void Use()
     {  
-
+        currWeapon = playerInventory.currentMeleeWeapon;
         currWeapon.GetComponent<WeaponStats>().atkDmg = (int)(currWeapon.GetComponent<WeaponStats>().atkDmg * 1.5);//changes the weapons damage to be 1.5 times as much 
         currWeapon.GetComponent<WeaponStats>().upgradeNums += 1;
-        Debug.Log("upgradeNums: " + currWeapon.GetComponent<WeaponStats>().upgradeNums);
         Vector3 currScale = currWeapon.transform.localScale;
         Vector3 newScale = currScale * 1.5f;
         currWeapon.transform.localScale = newScale;
@@ -34,8 +33,6 @@ public class Anvil : MonoBehaviour
         //      If you get the weapon upgrade part working I can handle the cost
         // Each tier doubles the weapon damage and increases it's size by 1.5
         // (we can tweak these numbers for balance purposes)
-
-        Debug.Log("Used Anvil");
     }
 
 }
