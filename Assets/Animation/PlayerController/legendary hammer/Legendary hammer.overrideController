@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Legendary hammer
+  m_Controller: {fileID: 9100000, guid: aa3f3e9bf4de0094c840e2ecf4f46505, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 1827226128182048838, guid: 4da2703e87f5425a99943a3df6531a2f, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 4a3562af9999e4340b4c3f16bb7e00bc, type: 2}
+  - m_OriginalClip: {fileID: 1827226128182048838, guid: fcad0758afb641b5951bbf759871acb2, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 98f478338fbf8c043a6cb8c62668949f, type: 2}
+  - m_OriginalClip: {fileID: 1827226128182048838, guid: 02f821ae69a045f9b39d9d6a4ecaf0e5, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 0cced60b33c1f9846be5af58cf6f7a10, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 69d63611e05ad4e499f67cfff482169d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 552db81331a9d1d44af70f8b8902e3f8, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: b065c2dd8b6dfba4bbd152d65aecdb15, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b26ee7b29aaa60a4d8a7bfd06e58634c, type: 2}
