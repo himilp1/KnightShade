@@ -217,7 +217,7 @@ public class ThirdPersonPlayer : MonoBehaviour
                 }
             }
             else if(hit.collider.CompareTag("LegendaryBox")){
-                int mysteryBoxCost = 0;
+                int mysteryBoxCost = 200;
 
                 interactionText.SetText("Press 'E' to get a random Legendary weapon. \n(" + mysteryBoxCost + "Points");
                 interactionText.ShowText();
