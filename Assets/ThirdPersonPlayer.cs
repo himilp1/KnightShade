@@ -216,14 +216,16 @@ public class ThirdPersonPlayer : MonoBehaviour
                     statTracker.AddPointsSpent(mysteryBoxCost);
                 }
             }
-            else if(hit.collider.CompareTag("LegendaryBox")){
+            else if (hit.collider.CompareTag("LegendaryBox"))
+            {
                 int mysteryBoxCost = 200;
 
-                interactionText.SetText("Press 'E' to get a random Legendary weapon. \n(" + mysteryBoxCost + "Points");
+                interactionText.SetText("Press 'E' to get a random Legendary weapon. \n(" + mysteryBoxCost + "Points)");
                 interactionText.ShowText();
                 interactTextBackground.alpha = 1;
 
-                if(Input.GetKeyDown(KeyCode.E) && pointsTracker.currentPoints >= mysteryBoxCost){
+                if (Input.GetKeyDown(KeyCode.E) && pointsTracker.currentPoints >= mysteryBoxCost)
+                {
                     MysteryBox mysteryBox = hit.collider.GetComponent<MysteryBox>();
                     mysteryBox.Open();
                     pointsTracker.SpendPoints(mysteryBoxCost);
