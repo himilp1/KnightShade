@@ -7,7 +7,6 @@ public class EnemySpawner : MonoBehaviour
 {
     public List<Enemy> enemies = new List<Enemy>();
     public List<Enemy> bosses = new List<Enemy>();
-    public List<Enemy> bossEnemies = new List<Enemy>();
     public int currWave;
     public int waveValue;
     private List<GameObject> enemiesToSpawn = new List<GameObject>();
@@ -59,7 +58,6 @@ public class EnemySpawner : MonoBehaviour
                 if (currentGroupSize % waveGroupSize == 0) // Check if we've spawned a pair of enemies.
                 {
                     currentLocationIndex = (currentLocationIndex + 1) % chosenSpawns.Count; // Rotate through spawn locations.
-                    Debug.Log("currentLocationIndex: " + currentLocationIndex);
                 }
 
                 // Reset the spawn timer.
@@ -128,10 +126,12 @@ public class EnemySpawner : MonoBehaviour
         List<GameObject> generatedEnemies = new List<GameObject>();
         if (currWave % bossInterval == 0)
         {
-            Debug.Log("inside of boss check");
             int randBossId = Random.Range(0, bosses.Count);
             generatedEnemies.Add(bosses[randBossId].enemyPrefab);
             waveValue -= bosses[randBossId].cost;
+            if(bossInterval > 1){
+                bossInterval -= 1;
+            }
         }
 
         while (waveValue > 0)
